@@ -1,3 +1,4 @@
+# LMS-backend
 # React + TypeScript + Vite Setup
 
 This project is built with **React**, **TypeScript**, and **Vite** to ensure a fast and efficient development environment. The goal is to maintain clean and maintainable code with a focus on best practices in both **React** and **TypeScript**.
