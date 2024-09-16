@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite Setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is built with **React**, **TypeScript**, and **Vite** to ensure a fast and efficient development environment. The goal is to maintain clean and maintainable code with a focus on best practices in both **React** and **TypeScript**.
 
-Currently, two official plugins are available:
+## Minimum Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Use **Vite** together with **TypeScript** and **React**.
+- All code must be **strongly typed**: including variables, function arguments, and return values.
+- Components should be **thoughtfully designed** and should not exceed 100-150 lines in length.
+  - Each component should have a **specific responsibility**.
+- Aim to create **reusable components** (e.g., buttons, form inputs).
+- Any functions that are **not specific to React** should be extracted into `utils` files to keep components clean and focused.
+  
+## Frontend Design
 
-## Expanding the ESLint configuration
+The frontend should have a **consistent visual appearance**. Although it is allowed to use frameworks like **Bootstrap**, it is encouraged to practice building with **pure HTML and CSS**.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- If you use **Bootstrap**, take advantage of the pre-built components, such as forms.
+- Focus on **user experience** and aim to reduce **cognitive friction** for users:
+  - The system should be **easy to use** and **intuitive**.
+  - Ensure that the frontend is **responsive**, adjusting seamlessly to various screen sizes.
+  
+**Bonus points**: Implement a well-functioning **mobile version** of the application for an enhanced user experience on mobile devices.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## ESLint Configuration
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+To ensure code quality and consistency, it is recommended to configure **ESLint** for linting **TypeScript** and **React** code. Here's how you can expand the ESLint configuration:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Install Vite React plugins for **Fast Refresh**:
+   - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) using **Babel**.
+   - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) using **SWC**.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. **Configure ESLint** for type-aware linting rules:
+   - Modify the top-level `parserOptions` property:
+
+   ```js
+   export default tseslint.config({
+     languageOptions: {
+       // other options...
+       parserOptions: {
+         project: ['./tsconfig.node.json', './tsconfig.app.json'],
+         tsconfigRootDir: import.meta.dirname,
+       },
+     },
+   })
