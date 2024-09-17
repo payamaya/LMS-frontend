@@ -1,9 +1,7 @@
 import { ReactElement, useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Login(): ReactElement {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
   const [loginDetails, setLoginDetails] = useState({
     username: "",
     password: "",
@@ -40,6 +38,8 @@ export function Login(): ReactElement {
           Submit
         </button>
       </div>
+		<Link to="/student">To Student Dashboard</Link>
+		<Link to="/teacher">To Teacher Dashboard</Link>
     </div>
   );
 }
