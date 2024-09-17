@@ -4,6 +4,14 @@
 @import url(Navbar.css);
 @import url(StudentDashboardPage.css);
 
+:root{
+	--color-base: #F9F7F7;
+	--color-primary: #DBE2EF;
+	--color-secondary: #55679C;
+	--color-accent: #1E2A5E;
+	--color-neutral: #E1D7B7;
+}
+
 * {
 	color: black;
 	background-color: whitesmoke;
