@@ -2,7 +2,17 @@
 	background-color: lightgrey;
 	display: flex;
 	justify-content: center;
+	left: 0;
 	padding: 0.5rem 1rem;
+	position: fixed;
+	top: 0;
+	/* remove inline padding in the width */
+	width: calc(100% - 2rem);
+}
+
+/* Push body down according to height of navbar */
+body {
+	margin-top: 67px;
 }
 
 .navbar-container {
