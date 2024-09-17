@@ -6,7 +6,7 @@
 	padding: 0.5rem 1rem;
 	position: fixed;
 	top: 0;
-	/* remove inline padding in the width */
+	/* Remove inline padding in the width */
 	width: calc(100% - 2rem);
 }
 
@@ -25,8 +25,19 @@ body {
 }
 
 .link-home {
-	color: black;
 	flex: 1;
+	align-items: center;
+	display: flex;
+	text-decoration: none;
+}
+
+.avatar {
+	color: black;
+	font-size: 2rem;
+}
+
+.avatar:hover {
+	color: darkgrey;
 }
 
 .navbar-links {

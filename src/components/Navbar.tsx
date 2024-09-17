@@ -5,7 +5,9 @@ export function Navbar(): ReactElement {
 	return (
 		<header className="navbar">
 			<div className="navbar-container">
-				<Link to="/" className="link-home">avatarbild</Link>
+				<Link to="/" className="link-home">
+					<span className="material-symbols-outlined avatar">account_circle</span>
+				</Link>
 				<nav className="navbar-links">
 					<Link to="/student" className="link-student-dashboard">Student Dashboard</Link>
 					<Link to="/teacher" className="link-teacher-dashboard">Teacher Dashboard</Link>
