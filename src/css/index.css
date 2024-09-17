@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
 @import url(App.css);
 @import url(loginpage.css);
+@import url(Navbar.css);
 
 * {
 	color: black;
