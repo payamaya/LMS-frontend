@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Link } from "react-router-dom";
 
-export function Login(): ReactElement {
+export function LoginPage(): ReactElement {
   const [loginDetails, setLoginDetails] = useState({
     username: "",
     password: "",
