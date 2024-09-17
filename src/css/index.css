@@ -3,6 +3,7 @@
 @import url(App.css);
 @import url(LoginPage.css);
 @import url(Navbar.css);
+@import url(StudentDashboardPage.css);
 
 * {
 	color: black;
