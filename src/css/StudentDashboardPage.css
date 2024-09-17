@@ -22,6 +22,7 @@
 	max-height: 20rem;
 	overflow-y: auto;
 	background-color: white;
+	margin-top: 1rem;
 }
 
 .student-dashboard-scrollable-content::-webkit-scrollbar {
@@ -47,7 +48,7 @@
 	background-color: white;
 	font-size: 1.2rem;
 	margin-bottom: 0.5rem;
-	margin-top: 1.5rem;
+	padding-top: 0.5rem;
 }
 
 .student-dashboard-card p {
