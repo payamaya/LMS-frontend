@@ -9,13 +9,13 @@ export function LoginPage(): ReactElement {
 
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-	console.log(loginDetails);
+	  console.log(loginDetails);
   };
 
   return (
     <div className="login-page">
       <div className="login-page-title">Login</div>
-      <div className="login-page-form">
+      <form className="login-page-form">
         <div className="login-page-input-field">
           Username
           <input type="text" className="login-page-input" value={loginDetails.username} onChange={(e) => setLoginDetails({ ...loginDetails, username: e.target.value })} />
@@ -37,7 +37,7 @@ export function LoginPage(): ReactElement {
         <button className="login-page-button" onClick={handleSubmit}>
           Submit
         </button>
-      </div>
+      </form>
 		<Link to="/student">To Student Dashboard</Link>
 		<Link to="/teacher">To Teacher Dashboard</Link>
     </div>
