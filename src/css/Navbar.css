@@ -12,7 +12,7 @@
 
 /* Push body down according to height of navbar */
 body {
-	margin-top: 67px;
+	margin-top: 68px;
 }
 
 .navbar-container {
@@ -24,19 +24,19 @@ body {
 	width: 100%;
 }
 
-.link-home {
+.navbar-link-home {
 	flex: 1;
 	align-items: center;
 	display: flex;
 	text-decoration: none;
 }
 
-.avatar {
+.navbar-avatar {
 	color: black;
 	font-size: 2rem;
 }
 
-.avatar:hover {
+.navbar-avatar:hover {
 	color: darkgrey;
 }
 
@@ -57,9 +57,9 @@ body {
 	color: whitesmoke;
 }
 
-.link-student-dashboard,
-.link-teacher-dashboard,
-.link-course-details {
+.navbar-link-student-dashboard,
+.navbar-link-teacher-dashboard,
+.navbar-link-course-details {
 	background-color: lightcoral;
 	border: none;
 	border-radius: 4px;
@@ -68,7 +68,7 @@ body {
 	padding: 0.5rem 1rem;
 }
 
-.button-logout {
+.navbar-button-logout {
 	background-color: lightcoral;
 	border: none;
 	border-radius: 4px;
@@ -78,6 +78,6 @@ body {
 	padding: 0.5rem 1rem;
 }
 
-.button-logout:hover {
+.navbar-button-logout:hover {
 	background-color: lightpink;
 }
