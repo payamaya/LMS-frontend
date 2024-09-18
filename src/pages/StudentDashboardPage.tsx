@@ -2,29 +2,25 @@ import { ReactElement } from "react";
 
 export function StudentDashboardPage(): ReactElement {
 	return (
-		<>
+		<div className="student-dashboard-container">
 			<h1 className="student-dashboard-heading">Student Dashboard</h1>
-			<div className="student-dashboard-container">
-
+			<div className="student-dashboard-card-container">
 				<div className="student-dashboard-card">
 					<h2 className="student-dashboard-course-heading">Introduction to React</h2>
-					<p>Your current course</p>
-					<h3>Participants</h3>
-					<ul className="student-dashboard-course-participants">
-						<li className="student-dashboard-course-participant">Adam</li>
-						<li className="student-dashboard-course-participant">Eva</li>
-					</ul>
-					<h3>Modules</h3>
+					<p className="student-dashboard-course-subheading">Your current course</p>
+					<h3 className="student-dashboard-course-participants-heading">Participants</h3>
+					<div className="student-dashboard-course-participants">25 students enrolled (TODO: make this dropdown list clickable)</div>
+					<h3 className="student-dashboard-course-modules-heading">Modules</h3>
 					<ul className="student-dashboard-course-modules">
-						<li>
+						<li className="student-dashboard-course-modules-listitem">
 							<span className="student-dashboard-course-module-name">React Basics</span>
 							<span className="student-dashboard-course-module-state completed">Completed</span>
 						</li>
-						<li>
+						<li className="student-dashboard-course-modules-listitem">
 							<span className="student-dashboard-course-module-name">State and Props</span>
 							<span className="student-dashboard-course-module-state in-progress">In Progress</span>
 						</li>
-						<li>
+						<li className="student-dashboard-course-modules-listitem">
 							<span className="student-dashboard-course-module-name">Hooks</span>
 							<span className="student-dashboard-course-module-state not-started">Not Started</span>
 						</li>
@@ -33,7 +29,7 @@ export function StudentDashboardPage(): ReactElement {
 
 				<div className="student-dashboard-card">
 					<h2 className="student-dashboard-activites-header">Activity Schedule</h2>
-					<p>Your upcoming activities</p>
+					<p className="student-dashboard-activites-subheading">Your upcoming activities</p>
 					<div className="student-dashboard-scrollable-content">
 						<ul className="student-dashboard-activity-list">
 							<li className="student-dashboard-activity">
@@ -65,6 +61,6 @@ export function StudentDashboardPage(): ReactElement {
 					</div>
 				</div>
 			</div >
-		</>
+		</div>
 	);
 }

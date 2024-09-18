@@ -1,28 +1,83 @@
-.student-dashboard-heading {
-	font-size: 2rem;
-	font-weight: bold;
-	padding: 2.1rem;
+.student-dashboard-container {
+	padding: 2rem 10rem;
 }
 
-.student-dashboard-container {
+.student-dashboard-heading {
+	font-size: var(--h1);
+	font-weight: var(--font-weight-fat);
+	margin-bottom: 2rem;
+}
+
+.student-dashboard-card-container {
 	display: flex;
+	gap: 2rem;
 	justify-content: space-between;
-	padding-inline: 2rem;
 }
 
 .student-dashboard-card {
-	background-color: white;
-	border: 1px solid lightgrey;
-	border-radius: 4px;
+	background-color: var(--color-primary);
+	border: var(--border) var(--color-border);
+	border-radius: var(--border-radius);
 	padding: 1.5rem;
-	width: 45%;
+	width: 50%;
+}
+
+.student-dashboard-course-heading,
+.student-dashboard-activites-header {
+	font-size: var(--h2);
+	margin-bottom: 0.2rem;
+}
+
+.student-dashboard-course-subheading,
+.student-dashboard-activites-subheading {
+	font-size: var(--p-size);
+	margin-bottom: 2rem;
+}
+
+.student-dashboard-course-participants-heading {
+	color: var(--color-accent);
+	font-size: var(--h3);
+	margin-bottom: 0.2rem;
+}
+
+.student-dashboard-course-participants {
+	font-size: var(--p-size);
+	margin-bottom: 2rem;
+}
+
+.student-dashboard-course-modules-heading {
+	color: var(--color-accent);
+	font-size: var(--h3);
+	margin-bottom: 0.2rem;
+}
+
+.student-dashboard-course-modules {
+	list-style: none;
+}
+
+.student-dashboard-course-modules-listitem {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.4rem;
+	font-size: var(--p-size);
+}
+
+.student-dashboard-course-module-state.completed {
+	color: green;
+}
+
+.student-dashboard-course-module-state.in-progress {
+	color: orange;
+}
+
+.student-dashboard-course-module-state.not-started {
+	color: gray;
 }
 
 .student-dashboard-scrollable-content {
+	background-color: var(--color-primary);
 	max-height: 20rem;
 	overflow-y: auto;
-	background-color: white;
-	margin-top: 1rem;
 }
 
 .student-dashboard-scrollable-content::-webkit-scrollbar {
@@ -38,83 +93,25 @@
 	background-color: #999;
 }
 
-.student-dashboard-card h2 {
-	background-color: white;
-	font-size: 1.5rem;
-	margin-bottom: 0.5rem;
-}
-
-.student-dashboard-card h3 {
-	background-color: white;
-	font-size: 1.2rem;
-	margin-bottom: 0.5rem;
-	padding-top: 0.5rem;
-}
-
-.student-dashboard-card p {
-	background-color: white;
-	font-size: 0.9rem;
-	margin-bottom: 0.5rem;
-}
-
-.student-dashboard-course-participants {
-	background-color: white;
-	display: flex;
-	gap: 1rem;
-	margin-bottom: 0.5rem;
-}
-
-.student-dashboard-course-participant {
-	align-items: center;
-	background-color: #ddd;
-	border-radius: 50%;
-	display: flex;
-	height: 2rem;
-	list-style: none;
-	min-width: 2rem;
-	padding: 0.5rem;
-	text-align: center;
-	width: auto;
-}
-
-.student-dashboard-course-modules {
-	background-color: white;
-	list-style: none;
-	padding-block: 0.5rem;
-}
-
-.student-dashboard-course-modules li {
-	align-items: center;
-	background-color: white;
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 0.5rem;
-}
-
-.student-dashboard-course-module-name,
-.student-dashboard-course-module-state {
-	background-color: white;
-	font-size: 0.9rem;
-}
-
-.student-dashboard-course-module-state.completed {
-	color: green;
-}
-
-.student-dashboard-course-module-state.in-progress {
-	color: orange;
-}
-
-.student-dashboard-course-module-state.not-started {
-	color: gray;
-}
-
 .student-dashboard-activity-list {
 	list-style: none;
-	background-color: white;
 }
 
-.student-dashboard-activity,
-.student-dashboard-activity-title {
-	background-color: white;
+.student-dashboard-activity {
+	background-color: var(--color-base);
+	border-radius: var(--border-radius);
+	margin-bottom: 2rem;
+	padding: 1rem;
+}
+
+.student-dashboard-activities-title {
+	color: var(--color-accent);
+	font-size: var(--h3);
+	margin-bottom: 0.5rem;
+}
+
+.student-dashboard-activities-datetime,
+.student-dashboard-activities-duration {
+	color: var(--color-secondary);
+	font-size: var(--p-size);
 }
