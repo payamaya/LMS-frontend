@@ -1,23 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
-@import url(LoginPage.css);
+/* @import url(LoginPage.css); */
 @import url(Navbar.css);
 @import url(StudentDashboardPage.css);
 
-:root{
-	--color-base: #F9F7F7;
-	--color-primary: #DBE2EF;
-	--color-secondary: #55679C;
-	--color-accent: #1E2A5E;
-	--color-neutral: #E1D7B7;
+:root {
+	--color-base: #FCFBFB;
+	--color-primary: #E8EBF0;
+	--color-secondary: #7C88B5;
+	--color-accent: #404A7E;
+	--color-neutral: #F3ECD4;
+	--color-contrary: #F79AAE;
+	--border-radius: 4px;
 }
+
 
 * {
 	color: black;
-	background-color: whitesmoke;
+	background-color: var(--color-base);
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	margin: 0;
 	padding: 0;
+	scroll-behavior: smooth;
 }
