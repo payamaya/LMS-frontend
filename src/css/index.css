@@ -10,6 +10,8 @@
 	--color-base: #fcfbfb;
 	/* background color for cards and the navigation bar */
 	--color-primary: #e8ebf0;
+	/* some borders */
+	--color-border: #e6e6e8;
 	/* borders and some text elements */
 	--color-secondary: #7c88b5;
 	/* buttons, headings, and hover states */
@@ -20,12 +22,14 @@
 	--color-contrary: #f79aae;
 	/* primary text color */
 	--color-text-dark: #2a2d3b;
-	--border-radius: 8px;
+	--border-radius: 6px;
 	--border: 1px solid;
 	--p-size: 0.8rem;
 	--h1: 2rem;
 	--h2: 1.6rem;
 	--h3: 1.2rem;
+	--font-weight-normal: 400;
+	--font-weight-fat: 600;
 }
 
 * {
