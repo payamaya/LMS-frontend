@@ -13,7 +13,7 @@ export function LoginPage(): ReactElement {
 	};
 
 	return (
-		<>
+		<div className="login-page-container">
 			<div className="login-page">
 				<div className="login-page-title">Login</div>
 				<form className="login-page-form">
@@ -37,6 +37,6 @@ export function LoginPage(): ReactElement {
 			</div>
 			<Link to="/student">To Student Dashboard</Link>
 			<Link to="/teacher">To Teacher Dashboard</Link>
-		</>
+		</div>
 	);
 }
