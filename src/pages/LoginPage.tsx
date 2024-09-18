@@ -2,44 +2,41 @@ import { ReactElement, useState } from "react";
 import { Link } from "react-router-dom";
 
 export function LoginPage(): ReactElement {
-  const [loginDetails, setLoginDetails] = useState({
-    username: "",
-    password: "",
-  });
+	const [loginDetails, setLoginDetails] = useState({
+		username: "",
+		password: "",
+	});
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-	  console.log(loginDetails);
-  };
+	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		console.log(loginDetails);
+	};
 
-  return (
-    <div className="login-page">
-      <div className="login-page-title">Login</div>
-      <form className="login-page-form">
-        <div className="login-page-input-field">
-          Username
-          <input type="text" className="login-page-input" value={loginDetails.username} onChange={(e) => setLoginDetails({ ...loginDetails, username: e.target.value })} />
-        </div>
-        <div className="login-page-input-field">
-          Password
-          <input
-            type="password"
-            className="login-page-input"
-            value={loginDetails.password}
-            onChange={(e) =>
-              setLoginDetails({
-                ...loginDetails,
-                password: e.target.value,
-              })
-            }
-          />
-        </div>
-        <button className="login-page-button" onClick={handleSubmit}>
-          Submit
-        </button>
-      </form>
-		<Link to="/student">To Student Dashboard</Link>
-		<Link to="/teacher">To Teacher Dashboard</Link>
-    </div>
-  );
+	return (
+		<>
+			<div className="login-page">
+				<div className="login-page-title">Login</div>
+				<form className="login-page-form">
+					<input type="text" className="login-page-input" placeholder="Username" value={loginDetails.username} onChange={(e) => setLoginDetails({ ...loginDetails, username: e.target.value })} />
+					<input
+						type="password"
+						className="login-page-input"
+						placeholder="Password"
+						value={loginDetails.password}
+						onChange={(e) =>
+							setLoginDetails({
+								...loginDetails,
+								password: e.target.value,
+							})
+						}
+					/>
+					<button type="submit" className="login-page-button" onClick={handleSubmit}>
+						Submit
+					</button>
+				</form>
+			</div>
+			<Link to="/student">To Student Dashboard</Link>
+			<Link to="/teacher">To Teacher Dashboard</Link>
+		</>
+	);
 }
