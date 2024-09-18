@@ -39,7 +39,7 @@
 
 .login-page-button {
 	background-color: var(--color-accent);
-	border: var(--border) var(--color-accent);
+	border: none;
 	border-radius: var(--border-radius);
 	color: var(--color-base);
 	font-weight: var(--font-weight-fat);
@@ -50,6 +50,5 @@
 
 .login-page-button:hover {
 	background-color: var(--color-secondary);
-	border-color: var(--color-secondary);
 	cursor: pointer;
 }
