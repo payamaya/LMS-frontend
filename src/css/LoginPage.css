@@ -9,13 +9,12 @@
 
 .login-page-title{
     color: var(--color-secondary);
-    font-size:xx-large
+    font-size: var(--h1);
 }
 
 .login-page-form{
     background-color: var(--color-primary);
-    border: 10px solid;
-    border-color: var(--color-secondary);
+    border: var(--border) var(--color-secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,13 +26,14 @@
 
 .login-page-input-field{
     background-color: var(--color-primary);
-    /* color: var(--color-neutral); */
     display: flex;
     flex-direction: column;
     min-width: 15rem;
 }
 
 .login-page-button{
-    min-width: 15rem;
-    height: 1rem;
+    background-color: white;
+    min-width: 8rem;
+    padding-block: .4rem;
+    border-radius: var(--border);
 }

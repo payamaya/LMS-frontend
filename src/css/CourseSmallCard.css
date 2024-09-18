@@ -1,0 +1,14 @@
+.course-small-card-main{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+};
+
+.course-small-top{
+    display: flex;
+    flex-direction: column;
+};
+
+.course-small-title{
+    background-color: blue;
+}
