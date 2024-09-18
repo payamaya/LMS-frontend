@@ -28,6 +28,7 @@
 	--h1: 2rem;
 	--h2: 1.6rem;
 	--h3: 1.2rem;
+	--nav-size: 1rem;
 	--font-weight-normal: 400;
 	--font-weight-fat: 600;
 }
@@ -43,4 +44,6 @@ body {
 	font-family: "Roboto", sans-serif;
 	font-weight: 400;
 	font-style: normal;
+	/* Push body down according to height of navbar */
+	margin-top: 72px;
 }

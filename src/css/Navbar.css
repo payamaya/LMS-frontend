@@ -1,83 +1,60 @@
 .navbar {
-	background-color: lightgrey;
+	align-items: center;
+	background-color: var(--color-primary);
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	left: 0;
-	padding: 0.5rem 1rem;
+	padding: 1rem 4rem;
 	position: fixed;
 	top: 0;
 	/* Remove inline padding in the width */
-	width: calc(100% - 2rem);
-}
-
-/* Push body down according to height of navbar */
-body {
-	margin-top: 68px;
-}
-
-.navbar-container {
-	align-items: center;
-	border: 2px solid darkgrey;
-	display: flex;
-	justify-content: space-between;
-	padding: 0.5rem 1rem;
-	width: 100%;
+	width: calc(100% - 8rem);
 }
 
 .navbar-link-home {
-	flex: 1;
-	align-items: center;
+	background-color: var(--color-base);
+	border: none;
+	border-radius: 50%;
 	display: flex;
 	text-decoration: none;
+	padding: 0.25rem;
 }
 
 .navbar-avatar {
-	color: black;
+	color: var(--color-text-dark);
 	font-size: 2rem;
 }
 
 .navbar-avatar:hover {
-	color: darkgrey;
+	color: var(--color-secondary);
 }
 
 .navbar-links {
 	display: flex;
-	flex: 8;
-	gap: 2rem;
+	gap: 3rem;
 }
 
 .navbar-links a {
-	font-size: 0.8rem;
-	color: whitesmoke;
+	font-size: var(--nav-size);
+	color: var(--color-text-dark);
 	text-decoration: none;
 }
 
 .navbar-links a:hover {
-	background-color: lightpink;
-	color: whitesmoke;
-}
-
-.navbar-link-student-dashboard,
-.navbar-link-teacher-dashboard,
-.navbar-link-course-details {
-	background-color: lightcoral;
-	border: none;
-	border-radius: 4px;
-	color: whitesmoke;
-	cursor: pointer;
-	padding: 0.5rem 1rem;
+	color: var(--color-secondary);
 }
 
 .navbar-button-logout {
-	background-color: lightcoral;
+	background-color: var(--color-primary);
 	border: none;
-	border-radius: 4px;
-	color: whitesmoke;
+	border-radius: var(--border-radius);
+	color: var(--color-text-dark);
 	cursor: pointer;
-	font-size: 0.8rem;
-	padding: 0.5rem 1rem;
+	font-size: var(--nav-size);
+	padding: 0.6875rem 1rem;
 }
 
 .navbar-button-logout:hover {
-	background-color: lightpink;
+	background-color: var(--color-secondary);
+	color: var(--color-base);
 }
