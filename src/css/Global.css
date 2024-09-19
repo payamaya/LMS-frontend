@@ -1,55 +1,59 @@
 .g-container {
-  padding-inline: 10rem;
+	padding-inline: 10rem;
 }
 
 .g-page-header {
-  font-size: var(--h1);
-  font-weight: var(--font-weight-fat);
-  margin-bottom: 2rem;
-  padding-top: 2rem;
+	font-size: var(--h1);
+	font-weight: var(--font-weight-fat);
+	margin-bottom: 2rem;
+	padding-top: 2rem;
 }
 
 .g-page-card-container {
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
+	display: flex;
+	gap: 2rem;
+	justify-content: space-between;
 }
 
 .g-card {
-  background-color: var(--color-primary);
-  border: var(--border) var(--color-border);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  width: 50%;
+	background-color: var(--color-primary);
+	border: var(--border) var(--color-border);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	width: 50%;
 }
 
 .g-card-header {
-  font-size: var(--h2);
-  margin-bottom: var(--margin-bottom-large-card-header);
+	font-size: var(--h2);
+	margin-bottom: var(--margin-bottom-large-card-header);
 }
 
 .g-list {
-  list-style: none;
+	list-style: none;
 }
 
 .g-list-item {
-  background-color: var(--color-base);
-  border-radius: var(--border-radius);
-  margin-bottom: 2rem;
-  padding: 1rem;
+	background-color: var(--color-base);
+	border-radius: var(--border-radius);
+	margin-bottom: 1rem;
+	padding: 1rem;
 }
 
 .g-list-item-header {
-  color: var(--color-accent);
-  font-size: var(--h3);
-  margin-bottom: 0.5rem;
+	color: var(--color-accent);
+	font-size: var(--h3);
+	margin-bottom: 0.5rem;
 }
 
 .g-list-item-text {
-  color: var(--color-secondary);
-  font-size: var(--p-size);
+	color: var(--color-secondary);
+	font-size: var(--p-size);
 }
 
 .g-border-style {
-  border-radius: var(--border-radius);
+	border-radius: var(--border-radius);
+}
+
+.g-text {
+	font-size: var(--p-size);
 }

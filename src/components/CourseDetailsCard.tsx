@@ -4,15 +4,18 @@ import { CourseDetailsStudentsDropdown } from "./CourseDetailsStudentsDropdown";
 
 export function CourseDetailsCard(): ReactElement {
 	return (
-		<div className="course-details-card">
-			<h2>Introduction to React</h2>
-			<p>15 students enrolled</p>
+		<div className="g-card">
+			<h2 className="g-card-header">Course Details</h2>
+			<h3 className="g-list-item-header">Introduction to React</h3>
+			<p className="n-students g-list-item-text">Number of students: 4</p>
 			<CourseDetailsStudentsDropdown />
+			<h3 className="g-list-item-header">Modules</h3>
 			<CourseDetailsModuleDropdown />
 			<CourseDetailsModuleDropdown />
-			<div className="course-details-card-buttons">
-				<button className="edit-button">Edit</button>
-			</div>
+			<button className="edit-button">
+				<span className="material-symbols-outlined">edit_square</span>
+				<p>Edit Course</p>
+			</button>
 		</div>
 	);
 }

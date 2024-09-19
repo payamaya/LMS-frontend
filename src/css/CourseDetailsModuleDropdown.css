@@ -1,0 +1,28 @@
+.course-details-modules-dropdown .course-details-modules-dropdown-button {
+	align-items: center;
+	border: none;
+	color: var(--color-accent);
+	cursor: pointer;
+	display: flex;
+	font: inherit;
+	font-size: var(--nav-size);
+	justify-content: space-between;
+	width: 100%;
+}
+
+.course-details-modules-dropdown .course-details-modules-dropdown-button :hover {
+	outline: none;
+}
+
+.course-details-modules-dropdown .g-list {
+	margin-top: 0.2rem;
+	margin-left: 1rem;
+	margin-bottom: 1rem;
+	margin-right: 1rem;
+}
+
+.course-details-modules-dropdown .g-list .g-text {
+	display: flex;
+	margin-bottom: 0.5rem;
+	justify-content: space-between;
+}

@@ -5,17 +5,16 @@ export function CourseDetailsStudentsDropdown(): ReactElement {
 
 	return (
 		<div className="course-details-students-dropdown">
-			<button className="course-details-students-dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
-				{isOpen ? "Hide Students" : "View Students"}
+			<button className="course-details-students-dropdown-button" onClick={() => setIsOpen(!isOpen)}>
+				<span className="material-symbols-outlined">keyboard_arrow_down</span>
+				<p>View Students</p>
 			</button>
-			{
-				isOpen && (
-					<ul className="course-details-students-list">
-						<li className="course-details-student-item">Adam</li>
-						<li className="course-details-student-item">Eva</li>
-					</ul>
-				)
-			}
+			{isOpen && (
+				<ul className="g-list">
+					<li className="g-text">Adam</li>
+					<li className="g-text">Eva</li>
+				</ul>
+			)}
 		</div>
 	);
 }
