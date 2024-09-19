@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
-import CourseSmallCard from "../components/CourseSmallCard";
 import { BasicCourseInfo } from "../interfaces";
+import { CourseDetailsCard } from "../components/CourseDetailsCard";
+import CourseItem from "../components/CourseItem";
 
 export function TeacherDashboardPage(): ReactElement {
   
@@ -12,10 +13,18 @@ export function TeacherDashboardPage(): ReactElement {
   };
 
   return (
-    <div className="teacher-dashboard-main">
-      <h1 className="teacher-header">Teacher Dashboard</h1>
-      <div className="teacher-dashboard-course-window">
-        <CourseSmallCard data={data} />
+    <div className="teacher-dashboard-container g-container">
+      <h1 className="g-page-header">Teacher Dashboard</h1>
+      <div className="g-page-card-container">
+        <div className="g-card">
+          <h2 className="g-card-header">Courses</h2>
+          <ul className="g-list">
+            <CourseItem data={data} />
+          </ul>
+        </div>
+        <div className="g-card">
+          <CourseDetailsCard />
+        </div>
       </div>
     </div>
   );
