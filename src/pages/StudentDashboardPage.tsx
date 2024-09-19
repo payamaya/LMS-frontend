@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { CourseDetailsStudentsDropdown } from "../components/CourseDetailsStudentsDropdown";
 
 export function StudentDashboardPage(): ReactElement {
 	return (
@@ -9,7 +10,8 @@ export function StudentDashboardPage(): ReactElement {
 					<h2 className="g-card-header">Introduction to React</h2>
 					<p className="g-text-subheading">Your current course</p>
 					<h3 className="g-list-item-header">Participants</h3>
-					<div className="g-text-subheading">25 students enrolled (TODO: make this dropdown list clickable)</div>
+					<p className="n-students g-list-item-text">4 students enrolled</p>
+					<CourseDetailsStudentsDropdown />
 					<h3 className="g-list-item-header">Modules</h3>
 					<ul className="g-list">
 						<li className="course-modules-list-item">
