@@ -2,65 +2,65 @@ import { ReactElement } from "react";
 
 export function StudentDashboardPage(): ReactElement {
 	return (
-		<div className="student-dashboard-container">
-			<h1 className="student-dashboard-heading">Student Dashboard</h1>
-			<div className="student-dashboard-card-container">
-				<div className="student-dashboard-card">
-					<h2 className="student-dashboard-course-heading">Introduction to React</h2>
-					<p className="student-dashboard-course-subheading">Your current course</p>
-					<h3 className="student-dashboard-course-participants-heading">Participants</h3>
-					<div className="student-dashboard-course-participants">25 students enrolled (TODO: make this dropdown list clickable)</div>
-					<h3 className="student-dashboard-course-modules-heading">Modules</h3>
-					<ul className="student-dashboard-course-modules">
-						<li className="student-dashboard-course-modules-listitem">
-							<span className="student-dashboard-course-module-name">React Basics</span>
-							<span className="student-dashboard-course-module-state completed">Completed</span>
+		<div className="g-container">
+			<h1 className="g-page-header">Student Dashboard</h1>
+			<div className="g-page-card-container">
+				<div className="g-card">
+					<h2 className="g-card-header">Introduction to React</h2>
+					<p className="g-text-subheading">Your current course</p>
+					<h3 className="g-list-item-header">Participants</h3>
+					<div className="g-text-subheading">25 students enrolled (TODO: make this dropdown list clickable)</div>
+					<h3 className="g-list-item-header">Modules</h3>
+					<ul className="g-list">
+						<li className="course-modules-list-item">
+							<span className="g-text">React Basics</span>
+							<span className="g-text completed">Completed</span>
 						</li>
-						<li className="student-dashboard-course-modules-listitem">
-							<span className="student-dashboard-course-module-name">State and Props</span>
-							<span className="student-dashboard-course-module-state in-progress">In Progress</span>
+						<li className="course-modules-list-item">
+							<span className="g-text">State and Props</span>
+							<span className="g-text in-progress">In Progress</span>
 						</li>
-						<li className="student-dashboard-course-modules-listitem">
-							<span className="student-dashboard-course-module-name">Hooks</span>
-							<span className="student-dashboard-course-module-state not-started">Not Started</span>
+						<li className="course-modules-list-item">
+							<span className="g-text">Hooks</span>
+							<span className="g-text not-started">Not Started</span>
 						</li>
 					</ul>
 				</div>
 
-				<div className="student-dashboard-card">
-					<h2 className="student-dashboard-activites-header">Activity Schedule</h2>
-					<p className="student-dashboard-activites-subheading">Your upcoming activities</p>
-					<div className="student-dashboard-scrollable-content">
-						<ul className="student-dashboard-activity-list">
-							<li className="student-dashboard-activity">
-								<h3 className="student-dashboard-activities-title">Watch React Fundamentals Video</h3>
-								<p className="student-dashboard-activities-datetime">2023-06-15 at 10:00</p>
-								<p className="student-dashboard-activities-duration">Duration: 1 hour</p>
+				<div className="g-card">
+					<h2 className="g-card-header">Activity Schedule</h2>
+					<p className="g-text-subheading">Your upcoming activities</p>
+					<div className="scrollable-content">
+						<ul className="g-list">
+							<li className="g-list-item">
+								<h3 className="g-list-item-header">Watch React Fundamentals Video</h3>
+								<p className="g-list-item-text">2023-06-15 at 10:00</p>
+								<p className="g-list-item-text">Duration: 1 hour</p>
 							</li>
-							<li className="student-dashboard-activity">
-								<h3 className="student-dashboard-activities-title">Complete React Quiz</h3>
-								<p className="student-dashboard-activities-datetime">2023-06-15 at 14:00</p>
-								<p className="student-dashboard-activities-duration">Duration: 30 minutes</p>
+							<li className="g-list-item">
+								<h3 className="g-list-item-header">Complete React Quiz</h3>
+								<p className="g-list-item-text">2023-06-15 at 14:00</p>
+								<p className="g-list-item-text">Duration: 30 minutes</p>
 							</li>
-							<li className="student-dashboard-activity">
-								<h3 className="student-dashboard-activities-title">Build a Simple React App</h3>
-								<p className="student-dashboard-activities-datetime">2023-06-16 at 11:00</p>
-								<p className="student-dashboard-activities-duration">Duration: 2 hours</p>
+							<li className="g-list-item">
+								<h3 className="g-list-item-header">Build a Simple React App</h3>
+								<p className="g-list-item-text">2023-06-16 at 11:00</p>
+								<p className="g-list-item-text">Duration: 2 hours</p>
 							</li>
-							<li className="student-dashboard-activity">
-								<h3 className="student-dashboard-activities-title">Peer Review Session</h3>
-								<p className="student-dashboard-activities-datetime">2023-06-17 at 15:00</p>
-								<p className="student-dashboard-activities-duration">Duration: 1 hour</p>
+							<li className="g-list-item">
+								<h3 className="g-list-item-header">Peer Review Session</h3>
+								<p className="g-list-item-text">2023-06-17 at 15:00</p>
+								<p className="g-list-item-text">Duration: 1 hour</p>
 							</li>
-							<li className="student-dashboard-activity">
-								<h3 className="student-dashboard-activities-title">React Hooks Workshop</h3>
-								<p className="student-dashboard-activities-datetime">2023-06-18 at 09:00</p>
-								<p className="student-dashboard-activities-duration">Duration: 3 hours</p>
+							<li className="g-list-item">
+								<h3 className="g-list-item-header">React Hooks Workshop</h3>
+								<p className="g-list-item-text">2023-06-18 at 09:00</p>
+								<p className="g-list-item-text">Duration: 3 hours</p>
 							</li>
 						</ul>
 					</div>
 				</div>
-			</div >
+			</div>
 		</div>
 	);
 }
