@@ -14,7 +14,7 @@
 	padding: 0.75rem 0.75rem;
 }
 
-.g-card .edit-button :hover {
+.g-card .edit-button:hover {
 	background-color: var(--color-secondary);
 	cursor: pointer;
 }
