@@ -7,8 +7,7 @@
 	padding: 1rem 10rem;
 	position: fixed;
 	top: 0;
-	/* Remove inline padding in the width */
-	width: calc(100% - 20rem);
+	width: 100%;
 }
 
 .navbar-link-home {
