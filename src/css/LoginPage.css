@@ -46,6 +46,7 @@
 	border: none;
 	border-radius: var(--border-radius);
 	color: var(--color-base);
+	font: inherit;
 	font-weight: var(--font-weight-fat);
 	margin-top: 2rem;
 	padding: 0.75rem 0.75rem;
