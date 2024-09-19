@@ -10,10 +10,6 @@
 	width: 100%;
 }
 
-.course-details-modules-dropdown .course-details-modules-dropdown-button :hover {
-	outline: none;
-}
-
 .course-details-modules-dropdown .g-list {
 	margin-top: 0.2rem;
 	margin-left: 1rem;
