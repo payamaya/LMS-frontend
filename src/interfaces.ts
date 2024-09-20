@@ -53,6 +53,8 @@ export interface IStudentMockData {
 }
 
 export interface IMockContext {
-	data: IStudentMockData;
+	studentMockData: IStudentMockData;
+	teacherBasicData: IBasicCourseInfo[];
+	teacherDetailedData: IDetailedCourse[];
 	isLoading: boolean;
 }

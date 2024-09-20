@@ -13,32 +13,16 @@ export function App(): ReactElement {
 	const [teacherDetailedData, setTeacherDetaildData] = useState<IDetailedCourse[]>(teacherDetailedMockData);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
+	// fetch function here before context
+
 	// context
 	const mockContext: IMockContext = {
-		data: studentMockData,
+		studentMockData,
+		teacherBasicData,
+		teacherDetailedData,
 		isLoading
 		//future API call functions here to pass down
 	};
-
-	/*
-	// fetch functions
-	// todo: promise return ett interface, beroende på vilken endpoint vi skickar så kan vi få det interfacet
-	const fetchData = async (url: string): Promise<any> => {
-		setIsLoading(true)
-		try {
-			const response = await fetch(url); // fetch the api endpoint
-			const data = await response.json(); // parse to json
-			setData(data);
-		}
-		catch (error) {
-			console.error("Error fetching the api, error: ", error);
-			return null;
-		}
-		finally {
-			setIsLoading(false);
-		}
-	}
-	*/
 
 	return (
 		<div className="app">

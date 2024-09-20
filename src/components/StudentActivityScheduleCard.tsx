@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { IMockContext } from "../interfaces";
 
 export function StudentActivityScheduleCard(): ReactElement {
-	const { data } = useOutletContext<IMockContext>();
+	const { studentMockData } = useOutletContext<IMockContext>();
 
 	// AI Helper function to calculate the time duration
 	const calculateDuration = (startTime: string, endTime: string): string => {
@@ -36,7 +36,7 @@ export function StudentActivityScheduleCard(): ReactElement {
 			<p className="g-text-subheading">Your upcoming activities</p>
 			<div className="scrollable-content">
 				<ul className="g-list">
-					{data.course.modules
+					{studentMockData.course.modules
 						.filter((module) => module.state === "in-progress")
 						.map((module) =>
 							module.activities.map((activity) => (

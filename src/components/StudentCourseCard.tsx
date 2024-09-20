@@ -4,7 +4,7 @@ import { IMockContext } from "../interfaces";
 import { CourseDetailsStudentsDropdown } from "../components/CourseDetailsStudentsDropdown";
 
 export function StudentCourseCard(): ReactElement {
-	const { data } = useOutletContext<IMockContext>();
+	const { studentMockData } = useOutletContext<IMockContext>();
 
 	// helper function: get state text from state
 	const getModuleStateLabel = (state: string): string => {
@@ -22,14 +22,14 @@ export function StudentCourseCard(): ReactElement {
 
 	return (
 		<div className="g-card">
-			<h2 className="g-card-header">{data.course.courseName}</h2>
+			<h2 className="g-card-header">{studentMockData.course.courseName}</h2>
 			<p className="g-text-subheading">Your current course</p>
 			<h3 className="g-list-item-header">Participants</h3>
-			<p className="n-students g-list-item-text">{data.course.users.length} students enrolled</p>
+			<p className="n-students g-list-item-text">{studentMockData.course.users.length} students enrolled</p>
 			<CourseDetailsStudentsDropdown />
 			<h3 className="g-list-item-header">Modules</h3>
 			<ul className="g-list">
-				{data.course.modules.map((module) => (
+				{studentMockData.course.modules.map((module) => (
 					<li key={module.moduleId} className="course-modules-list-item">
 						<span className="g-text">{module.moduleName}</span>
 						<span className={`g-text ${module.state}`}>
