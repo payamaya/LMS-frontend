@@ -26,6 +26,7 @@
 				"description": "Learn the basics of programming using Python.",
 				"startDate": "2023-01-05",
 				"endDate": "2023-02-15",
+				"state": "completed",
 				"activities": [
 					{
 						"activityId": 1,
@@ -57,13 +58,14 @@
 				"description": "An introduction to common data structures.",
 				"startDate": "2023-02-20",
 				"endDate": "2023-04-10",
+				"state": "in-progress",
 				"activities": [
 					{
 						"activityId": 3,
 						"activityName": "Lecture 1: Arrays and Linked Lists",
 						"description": "Overview of arrays and linked lists.",
 						"startTime": "2023-02-20T10:00:00",
-						"endTime": "2023-02-20T11:00:00",
+						"endTime": "2023-02-20T11:30:00",
 						"activityType": {
 							"activityTypeId": 1,
 							"activityTypeName": "Lecture"
@@ -75,6 +77,38 @@
 						"description": "Implement a simple linked list in Python.",
 						"startTime": "2023-02-22T10:00:00",
 						"endTime": "2023-03-01T10:00:00",
+						"activityType": {
+							"activityTypeId": 2,
+							"activityTypeName": "Assignment"
+						}
+					}
+				]
+			},
+			{
+				"moduleId": 3,
+				"moduleName": "Algorithms",
+				"description": "A course on fundamental algorithms.",
+				"startDate": "2023-04-20",
+				"endDate": "2023-06-10",
+				"state": "not-started",
+				"activities": [
+					{
+						"activityId": 5,
+						"activityName": "Lecture 1: Sorting Algorithms",
+						"description": "Introduction to common sorting algorithms.",
+						"startTime": "2023-04-20T10:00:00",
+						"endTime": "2023-04-20T11:00:00",
+						"activityType": {
+							"activityTypeId": 1,
+							"activityTypeName": "Lecture"
+						}
+					},
+					{
+						"activityId": 6,
+						"activityName": "Assignment 1: Implement Merge Sort",
+						"description": "Write a program that implements the merge sort algorithm.",
+						"startTime": "2023-04-22T10:00:00",
+						"endTime": "2023-04-30T10:00:00",
 						"activityType": {
 							"activityTypeId": 2,
 							"activityTypeName": "Assignment"
