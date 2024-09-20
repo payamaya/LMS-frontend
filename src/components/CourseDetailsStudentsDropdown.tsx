@@ -1,7 +1,10 @@
 import { ReactElement, useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import { MockContext } from "../interfaces";
 
 export function CourseDetailsStudentsDropdown(): ReactElement {
 	const [isOpen, setIsOpen] = useState(false);
+	const { data } = useOutletContext<MockContext>();
 
 	return (
 		<div className="course-details-students-dropdown">
@@ -11,8 +14,9 @@ export function CourseDetailsStudentsDropdown(): ReactElement {
 			</button>
 			{isOpen && (
 				<ul className="g-list">
-					<li className="g-text">Adam</li>
-					<li className="g-text">Eva</li>
+					{data.course.users.map((user) => (
+						<li key={user.userId} className="g-text">{user.name}</li>
+					))}
 				</ul>
 			)}
 		</div>
