@@ -45,7 +45,7 @@ export interface IUser {
 	email: string;
 }
 
-export interface IMockData {
+export interface IStudentMockData {
 	userId: number;
 	name: string;
 	email: string;
@@ -53,6 +53,6 @@ export interface IMockData {
 }
 
 export interface IMockContext {
-	data: IMockData;
+	data: IStudentMockData;
 	isLoading: boolean;
 }
