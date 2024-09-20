@@ -36,19 +36,21 @@ export function StudentActivityScheduleCard(): ReactElement {
 			<p className="g-text-subheading">Your upcoming activities</p>
 			<div className="scrollable-content">
 				<ul className="g-list">
-					{data.course.modules.map((module) =>
-						module.activities.map((activity) => (
-							<li key={activity.activityId} className="g-list-item">
-								<h3 className="g-list-item-header">{activity.activityName}</h3>
-								<p className="g-list-item-text">
-									{new Date(activity.startTime).toLocaleString()}
-								</p>
-								<p className="g-list-item-text">
-									Duration: {calculateDuration(activity.startTime, activity.endTime)}
-								</p>
-							</li>
-						))
-					)}
+					{data.course.modules
+						.filter((module) => module.state === "in-progress")
+						.map((module) =>
+							module.activities.map((activity) => (
+								<li key={activity.activityId} className="g-list-item">
+									<h3 className="g-list-item-header">{activity.activityName}</h3>
+									<p className="g-list-item-text">
+										{new Date(activity.startTime).toLocaleString()}
+									</p>
+									<p className="g-list-item-text">
+										Duration: {calculateDuration(activity.startTime, activity.endTime)}
+									</p>
+								</li>
+							))
+						)}
 				</ul>
 			</div>
 		</div>
