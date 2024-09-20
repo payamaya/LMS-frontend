@@ -1,0 +1,13 @@
+{
+	"userId": 101,
+	"name": "Alice Johnson",
+	"email": "alice.johnson@example.com",
+	"courses": [
+		{
+			"courseId": 1,
+			"courseName": "Computer Science Basics",
+			"description": "Introduction to computer science principles.",
+			"startDate": "2023-01-01"
+		}
+	]
+}
