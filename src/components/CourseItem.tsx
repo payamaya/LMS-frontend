@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
-import { BasicCourseInfo } from "../interfaces";
+import { IBasicCourseInfo } from "../interfaces";
 
 interface ICourseItem {
-	data: BasicCourseInfo;
+	data: IBasicCourseInfo;
 	toggleActiveCourse: (id: number) => void;
 	isActive: boolean;
 }

@@ -1,17 +1,21 @@
 import { ReactElement, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IMockContext, IMockData } from "../interfaces.ts";
-import mockData from "../courses-user-userid-mock.json";
+import { IBasicCourseInfo, IDetailedCourse, IMockContext, IStudentMockData } from "../interfaces.ts";
+import studentUserIdMockData from "../courses-user-userid-mock.json";
+import teacherBasicMockData from "../courses-mock.json";
+import teacherDetailedMockData from "../courses-courseid-mock.json";
 
 export function App(): ReactElement {
 	const location = useLocation();
-	const [data, setData] = useState<IMockData>(mockData);
+	const [studentMockData, setStudentMockData] = useState<IStudentMockData>(studentUserIdMockData);
+	const [teacherBasicData, setTeacherBasicData] = useState<IBasicCourseInfo[]>(teacherBasicMockData);
+	const [teacherDetailedData, setTeacherDetaildData] = useState<IDetailedCourse[]>(teacherDetailedMockData);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	// context
 	const mockContext: IMockContext = {
-		data,
+		data: studentMockData,
 		isLoading
 		//future API call functions here to pass down
 	};
