@@ -3,18 +3,21 @@ import { CourseDetailsModuleDropdown } from "./CourseDetailsModuleDropdown";
 import { CourseDetailsStudentsDropdown } from "./CourseDetailsStudentsDropdown";
 import { IDetailedCourse, IModule, IUser } from "../interfaces";
 
-interface ICourseDetailsCardProps{
+interface ICourseDetailsCardProps {
 	data: IDetailedCourse | undefined;
 };
 
-export function CourseDetailsCard({data}: ICourseDetailsCardProps): ReactElement {
+export function CourseDetailsCard({ data }: ICourseDetailsCardProps): ReactElement {
 
 	const studentCount: number | undefined = data?.users.length;
 	const students: IUser[] | undefined = data?.users;
 	const modules: IModule[] | undefined = data?.modules;
 
-	if(data == null){
-		return <div className="g-card"></div>;
+	if (data == null) {
+		return <div className="g-card">
+			<h2 className="g-card-header">Course Details</h2>
+			<p className="g-text">Select a course to view details</p>
+		</div>;
 	}
 
 	return (
