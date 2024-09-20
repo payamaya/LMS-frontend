@@ -63,3 +63,7 @@
 	font-size: var(--p-size);
 	margin-bottom: 2rem;
 }
+
+.g-active {
+	background-color: var(--color-neutral);
+}
