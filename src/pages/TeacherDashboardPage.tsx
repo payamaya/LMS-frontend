@@ -7,49 +7,6 @@ export function TeacherDashboardPage(): ReactElement {
     const data: BasicCourseInfo[] =
 	[
         {
-            id: 1,
-            name: "Introduction to React",
-            primary_teacher: "Linus Torvalds",
-            startdate: "2024-05-17",
-			students:
-			[
-				{
-					id: 3,
-					firstname: "Jonathan",
-					lastname: "Ek",
-					email: "eken@mail.com"
-				},
-				{
-					id: 4,
-					firstname: "Malin",
-					lastname: "Lindborg",
-					email: "malin.lindborg@mail.com"
-				}
-			],
-			modules:
-			[
-				{
-					id: 5,
-					module_name: "React Basics",
-					activites:
-					[
-						{
-							id: 6,
-							activity_name: "React Fundamentals Video",
-							type: "E-learning",
-							length: "1 hour"
-						},
-						{
-							id: 6,
-							activity_name: "React Fundamentals Video",
-							type: "Interactive",
-							length: "1 hour"
-						}
-					]
-				}
-			]
-        },
-        {
             id: 2,
             name: "Introduction to c#",
             primary_teacher: "Linus Torvalds",
