@@ -1,10 +1,10 @@
 import { ReactElement, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import { MockContext } from "../interfaces";
+import { IMockContext } from "../interfaces";
 
 export function CourseDetailsStudentsDropdown(): ReactElement {
 	const [isOpen, setIsOpen] = useState(false);
-	const { data } = useOutletContext<MockContext>();
+	const { data } = useOutletContext<IMockContext>();
 
 	return (
 		<div className="course-details-students-dropdown">

@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import { useOutletContext } from "react-router-dom";
-import { MockContext } from "../interfaces";
+import { IMockContext } from "../interfaces";
 
 export function StudentActivityScheduleCard(): ReactElement {
-	const { data } = useOutletContext<MockContext>();
+	const { data } = useOutletContext<IMockContext>();
 
 	// AI Helper function to calculate the time duration
 	const calculateDuration = (startTime: string, endTime: string): string => {
