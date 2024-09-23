@@ -26,7 +26,7 @@ export function StudentCourseCard(): ReactElement {
 			<p className="g-text-subheading">Your current course</p>
 			<h3 className="g-list-item-header">Participants</h3>
 			<p className="n-students g-list-item-text">{studentMockData.course.users.length} students enrolled</p>
-			<CourseDetailsStudentsDropdown />
+			<CourseDetailsStudentsDropdown students={studentMockData.course.users} />
 			<h3 className="g-list-item-header">Modules</h3>
 			<ul className="g-list">
 				{studentMockData.course.modules.map((module) => (

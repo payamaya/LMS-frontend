@@ -1,10 +1,12 @@
 import { ReactElement, useState } from "react";
-import { useOutletContext } from "react-router-dom";
-import { IMockContext } from "../interfaces";
+import { IUser } from "../interfaces";
 
-export function CourseDetailsStudentsDropdown(): ReactElement {
+interface ICourseDetailsStudentsDropdownProps {
+	students: IUser[];
+}
+
+export function CourseDetailsStudentsDropdown({ students }: ICourseDetailsStudentsDropdownProps): ReactElement {
 	const [isOpen, setIsOpen] = useState(false);
-	const { data } = useOutletContext<IMockContext>();
 
 	return (
 		<div className="course-details-students-dropdown">
@@ -14,7 +16,7 @@ export function CourseDetailsStudentsDropdown(): ReactElement {
 			</button>
 			{isOpen && (
 				<ul className="g-list">
-					{data.course.users.map((user) => (
+					{students.map((user) => (
 						<li key={user.userId} className="g-text">{user.name}</li>
 					))}
 				</ul>
