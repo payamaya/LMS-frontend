@@ -1,0 +1,28 @@
+.n-students {
+	margin-top: 1rem;
+	margin-bottom: 0.2rem;
+}
+
+.course-details-students-dropdown {
+	margin-bottom: 1.5rem;
+}
+
+.course-details-students-dropdown .course-details-students-dropdown-button {
+	align-items: center;
+	background: none;
+	border: none;
+	color: var(--color-accent);
+	cursor: pointer;
+	display: flex;
+	font: inherit;
+	font-size: var(--p-size);
+}
+
+.course-details-students-dropdown .course-details-students-dropdown-button:focus {
+	outline: none;
+}
+
+.course-details-students-dropdown .g-list {
+	margin-top: 0.2rem;
+	margin-left: 1.52rem;
+}

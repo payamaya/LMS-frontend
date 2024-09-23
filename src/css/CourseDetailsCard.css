@@ -1,0 +1,20 @@
+.g-card .edit-button {
+	align-items: center;
+	background-color: var(--color-accent);
+	border: none;
+	border-radius: var(--border-radius);
+	color: var(--color-base);
+	display: flex;
+	font: inherit;
+	font-size: var(--nav-size);
+	font-weight: var(--font-weight-fat);
+	gap: 0.5rem;
+	justify-content: space-between;
+	margin-top: 2rem;
+	padding: 0.75rem 0.75rem;
+}
+
+.g-card .edit-button:hover {
+	background-color: var(--color-secondary);
+	cursor: pointer;
+}

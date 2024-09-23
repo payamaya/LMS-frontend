@@ -1,12 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
-@import url(App.css);
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+@import url(CourseDetailsModuleDropdown.css);
+@import url(CourseDetailsStudentsDropdown.css);
+@import url(CourseDetailsCard.css);
+@import url(Global.css);
+@import url(LoginPage.css);
+@import url(Navbar.css);
+@import url(StudentDashboardPage.css);
+@import url(TeacherDashBoardPage.css);
+
+:root {
+	/* background color for the main content areas */
+	--color-base: #fcfbfb;
+	/* background color for cards and the navigation bar */
+	--color-primary: #e8ebf0;
+	/* some borders */
+	--color-border: #e6e6e8;
+	/* borders and some text elements */
+	--color-secondary: #7c88b5;
+	/* buttons, headings, and hover states */
+	--color-accent: #404a7e;
+	/* for hover states */
+	--color-neutral: #f3ecd4;
+	/* could be used for warning or error states if needed */
+	--color-contrary: #f79aae;
+	/* primary text color */
+	--color-text-dark: #2a2d3b;
+	--border-radius: 6px;
+	--border: 1px solid;
+	--p-size: 0.9rem;
+	--h1: 2rem;
+	--h2: 1.6rem;
+	--h3: 1.2rem;
+	--nav-size: 1rem;
+	--font-weight-normal: 400;
+	--font-weight-fat: 500;
+}
 
 * {
-	color: black;
-	font-family: "Roboto", sans-serif;
-	font-weight: 400;
-	font-style: normal;
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--color-base);
+	color: var(--color-text-dark);
+	font-family: "Roboto", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	/* Push body down according to height of navbar */
+	margin-top: 72px;
 }

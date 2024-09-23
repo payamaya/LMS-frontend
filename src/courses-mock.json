@@ -1,0 +1,16 @@
+[
+	{
+		"courseId": 1,
+		"courseName": "Computer Science Basics",
+		"description": "Introduction to computer science principles.",
+		"startDate": "2023-01-01",
+		"teacher": "Linus Torvalds"
+	},
+	{
+		"courseId": 2,
+		"courseName": "Web Development",
+		"description": "Learn the basics of web development, including HTML, CSS, and JavaScript.",
+		"startDate": "2023-03-01",
+		"teacher": "Linus Torvalds"
+	}
+]
