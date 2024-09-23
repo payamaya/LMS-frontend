@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { IUser } from "../interfaces";
 
 interface ICourseDetailsStudentsDropdownProps {
-	students: IUser[];
+	students: IUser[] | undefined;
 }
 
 export function CourseDetailsStudentsDropdown({ students }: ICourseDetailsStudentsDropdownProps): ReactElement {
@@ -16,7 +16,7 @@ export function CourseDetailsStudentsDropdown({ students }: ICourseDetailsStuden
 			</button>
 			{isOpen && (
 				<ul className="g-list">
-					{students.map((user) => (
+					{students?.map((user) => (
 						<li key={user.userId} className="g-text">{user.name}</li>
 					))}
 				</ul>
