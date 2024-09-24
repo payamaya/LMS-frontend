@@ -57,4 +57,7 @@ export interface IMockContext {
 	teacherBasicData: IBasicCourseInfo[];
 	teacherDetailedData: IDetailedCourse[];
 	isLoading: boolean;
+	activeCourse: IBasicCourseInfo | null;
+	detailedCourse: IDetailedCourse | undefined;
+	toggleActiveCourse: (id: number) => void;
 }

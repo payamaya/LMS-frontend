@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
 import { IBasicCourseInfo, IDetailedCourse, IMockContext, IStudentMockData } from "../interfaces.ts";
@@ -13,6 +13,19 @@ export function App(): ReactElement {
 	const [teacherDetailedData, setTeacherDetaildData] = useState<IDetailedCourse[]>(teacherDetailedMockData);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
+	const [activeCourse, setActiveCourse] = useState<IBasicCourseInfo | null>(null);
+	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse>();
+
+	useEffect(() => {
+		setDetailedCourse(teacherDetailedMockData.find((detailedCourse) => detailedCourse.courseId == activeCourse?.courseId));
+	}, [activeCourse]);
+
+	const toggleActiveCourse = (id: number): void => {
+		const selectedCourse = teacherBasicMockData.find((course) => course.courseId === id);
+		if (selectedCourse) setActiveCourse(selectedCourse);
+	};
+
+
 	// fetch function here before context
 
 	// context
@@ -20,7 +33,10 @@ export function App(): ReactElement {
 		studentMockData,
 		teacherBasicData,
 		teacherDetailedData,
-		isLoading
+		isLoading,
+		activeCourse,
+		detailedCourse,
+		toggleActiveCourse
 		//future API call functions here to pass down
 	};
 
