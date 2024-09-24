@@ -25,8 +25,10 @@ export function App(): ReactElement {
 		if (selectedCourse) setActiveCourse(selectedCourse);
 	};
 
-
-	// fetch function here before context
+	// fetch functions here before context
+	// lärare: api/courses (ger lista av alla kurser med tomma modul och activities arrayer)
+	// lärare: api/courses/{id} (ger detaljerad info när vi klickat på en kurs inne på teacher dashboard)
+	// student: api/user/{token} token som input parameter någonstans, ska ge ungefär samma json svar som raden ovan
 
 	// context
 	const mockContext: IMockContext = {
