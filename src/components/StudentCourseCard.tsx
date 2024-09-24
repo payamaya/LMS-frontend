@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 import { useOutletContext } from "react-router-dom";
-import { IMockContext } from "../interfaces";
+import { IContext } from "../interfaces";
 import { CourseDetailsStudentsDropdown } from "../components/CourseDetailsStudentsDropdown";
 
 export function StudentCourseCard(): ReactElement {
-	const { studentMockData } = useOutletContext<IMockContext>();
+	const { studentMockData } = useOutletContext<IContext>();
 
 	// helper function: get state text from state
 	const getModuleStateLabel = (state: string): string => {

@@ -1,60 +1,80 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IBasicCourseInfo, IDetailedCourse, IMockContext, IStudentMockData } from "../interfaces.ts";
-import studentUserIdMockData from "../courses-user-userid-mock.json";
-import teacherBasicMockData from "../courses-mock.json";
-import teacherDetailedMockData from "../courses-courseid-mock.json";
+import { IBasicCourseInfo, IDetailedCourse } from "../interfaces.ts";
+
+export interface IStudentMockData {
+	userId: number;
+	name: string;
+	email: string;
+	course: IDetailedCourse;
+}
+
+export interface IContext {
+	studentMockData: IStudentMockData | null;
+	teacherBasicData: IBasicCourseInfo[] | null;
+	activeCourse: IBasicCourseInfo | null;
+	detailedCourse: IDetailedCourse | null;
+	isLoading: boolean;
+	toggleActiveCourse: (id: string) => void;
+	fetchCourses: () => Promise<void>
+	fetchCoursesById: (id: string) => Promise<void>
+}
 
 export function App(): ReactElement {
 	const location = useLocation();
-	const [studentMockData, setStudentMockData] = useState<IStudentMockData>(studentUserIdMockData);
-	const [teacherBasicData, setTeacherBasicData] = useState<IBasicCourseInfo[]>(teacherBasicMockData);
-	const [teacherDetailedData, setTeacherDetaildData] = useState<IDetailedCourse[]>(teacherDetailedMockData);
+	const [studentMockData, setStudentMockData] = useState<IStudentMockData | null>(null);
+	const [teacherBasicData, setTeacherBasicData] = useState<IBasicCourseInfo[] | null>(null);
+	const [activeCourse, setActiveCourse] = useState<IBasicCourseInfo | null>(null);
+	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-	const [activeCourse, setActiveCourse] = useState<IBasicCourseInfo | null>(null);
-	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse>();
+	// changes which course is active (clicked)
+	const toggleActiveCourse = (id: string): void => {
+		if (teacherBasicData != null) {
+			const selectedCourse = teacherBasicData.find((course) => course.id === id);
+			if (selectedCourse != null) {
+				setActiveCourse(selectedCourse);
+			}
+		}
+	};
 
+	// active course changes its state
 	useEffect(() => {
-		setDetailedCourse(teacherDetailedMockData.find((detailedCourse) => detailedCourse.courseId == activeCourse?.courseId));
+		if (activeCourse != null) {
+			fetchCoursesById(activeCourse.id);
+		}
 	}, [activeCourse]);
 
-	const toggleActiveCourse = (id: number): void => {
-		const selectedCourse = teacherBasicMockData.find((course) => course.courseId === id);
-		if (selectedCourse) setActiveCourse(selectedCourse);
-	};
 
 	// fetch functions here before context
 	// lärare: api/courses (ger lista av alla kurser med tomma modul och activities arrayer)
-	const fetchCourses = async (): Promise<IBasicCourseInfo[] | null> => {
+	const fetchCourses = async (): Promise<void> => {
 		setIsLoading(true);
 		try {
-			const response = await fetch("https://localhost:7049/api/Courses"); // fetch the api endpoint
+			const response = await fetch("https://localhost:7049/api/courses"); // fetch the api endpoint
 			const data: IBasicCourseInfo[] = await response.json(); // parse to json
-			console.log(data); // data variable will now keep the response object
-			return data;
+			//console.log(data); // data variable will now keep the response object
+			setTeacherBasicData(data);
 		}
 		catch (error) {
 			console.error("Error fetching the api, error: ", error);
-			return null;
 		}
 		finally {
 			setIsLoading(false);
 		}
 	}
 	// lärare: api/courses/{id} (ger detaljerad info när vi klickat på en kurs inne på teacher dashboard)
-	const fetchCoursesById = async (): Promise<IDetailedCourse | null> => {
+	const fetchCoursesById = async (id: string): Promise<void> => {
 		setIsLoading(true);
 		try {
-			const response = await fetch("https://localhost:7049/api/Courses/5ae7fef5-a445-41ec-08db-08dcdc786974"); // fetch the api endpoint
+			const response = await fetch(`https://localhost:7049/api/courses/${id}`); // fetch the api endpoint
 			const data: IDetailedCourse = await response.json(); // parse to json
-			console.log(data); // data variable will now keep the response object
-			return data;
+			//console.log(data); // data variable will now keep the response object
+			setDetailedCourse(data);
 		}
 		catch (error) {
 			console.error("Error fetching the api, error: ", error);
-			return null;
 		}
 		finally {
 			setIsLoading(false);
@@ -63,14 +83,15 @@ export function App(): ReactElement {
 	// student: api/user/{token} token som input parameter någonstans, ska ge ungefär samma json svar som raden ovan
 
 	// context
-	const mockContext: IMockContext = {
+	const context: IContext = {
 		studentMockData,
 		teacherBasicData,
-		teacherDetailedData,
 		isLoading,
 		activeCourse,
 		detailedCourse,
-		toggleActiveCourse
+		toggleActiveCourse,
+		fetchCourses,
+		fetchCoursesById
 		//future API call functions here to pass down
 	};
 
@@ -78,9 +99,8 @@ export function App(): ReactElement {
 		<div className="app">
 			{location.pathname !== '/' && <Navbar />}
 			<main className="main-content">
-				<Outlet context={mockContext} />
+				<Outlet context={context} />
 				<button type="button" onClick={fetchCourses}>fetcha</button>
-				<button type="button" onClick={fetchCoursesById}>fetcha by id</button>
 			</main>
 		</div >
 	)

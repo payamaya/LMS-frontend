@@ -43,22 +43,6 @@ export interface IModule {
 }
 
 export interface IUser {
+	id: string;
 	name: string;
-}
-
-export interface IStudentMockData {
-	userId: number;
-	name: string;
-	email: string;
-	course: IDetailedCourse;
-}
-
-export interface IMockContext {
-	studentMockData: IStudentMockData;
-	teacherBasicData: IBasicCourseInfo[];
-	teacherDetailedData: IDetailedCourse[];
-	isLoading: boolean;
-	activeCourse: IBasicCourseInfo | null;
-	detailedCourse: IDetailedCourse | undefined;
-	toggleActiveCourse: (id: number) => void;
 }

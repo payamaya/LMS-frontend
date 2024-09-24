@@ -1,11 +1,12 @@
 import { ReactElement } from "react";
 import { CourseDetailsModuleDropdown } from "./CourseDetailsModuleDropdown";
 import { CourseDetailsStudentsDropdown } from "./CourseDetailsStudentsDropdown";
-import { IMockContext, IModule, IUser } from "../interfaces";
+import { IModule, IUser } from "../interfaces";
 import { useOutletContext } from "react-router-dom";
+import { IContext } from "./App";
 
 export function CourseDetailsCard(): ReactElement {
-	const { detailedCourse }: IMockContext = useOutletContext<IMockContext>();
+	const { detailedCourse }: IContext = useOutletContext<IContext>();
 
 	const studentCount: number | undefined = detailedCourse?.users.length;
 	const students: IUser[] | undefined = detailedCourse?.users;
@@ -27,8 +28,9 @@ export function CourseDetailsCard(): ReactElement {
 			<p className="n-students g-list-item-text">Number of students: {studentCount}</p>
 			<CourseDetailsStudentsDropdown students={students} />
 			<h3 className="g-list-item-header">Modules</h3>
-			<CourseDetailsModuleDropdown />
-			<CourseDetailsModuleDropdown />
+			{modules?.map((module) => (
+				<CourseDetailsModuleDropdown key={module.id} module={module} />
+			))}
 			<button className="edit-button">
 				<span className="material-symbols-outlined">edit_square</span>
 				<p>Edit Course</p>
