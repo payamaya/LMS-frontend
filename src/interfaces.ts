@@ -1,19 +1,21 @@
 export interface IActivity {
-	activityId: number;
+	id: string;
+	moduleId: string;
 	activityName: string;
 	description: string;
 	startTime: string;
 	endTime: string;
 	activityType: IActivityType;
+	activityTypeId: string;
 }
 
 export interface IActivityType {
-	activityTypeId: number;
+	id: string;
 	activityTypeName: string;
 }
 
 export interface IBasicCourseInfo {
-	courseId: number,
+	id: string,
 	courseName: string,
 	description: string,
 	startDate: string
@@ -21,7 +23,7 @@ export interface IBasicCourseInfo {
 }
 
 export interface IDetailedCourse {
-	courseId: number;
+	id: string;
 	courseName: string;
 	description: string;
 	startDate: string;
@@ -30,7 +32,8 @@ export interface IDetailedCourse {
 }
 
 export interface IModule {
-	moduleId: number;
+	id: string;
+	courseId: string;
 	moduleName: string;
 	description: string;
 	startDate: string;
@@ -40,9 +43,7 @@ export interface IModule {
 }
 
 export interface IUser {
-	userId: number;
 	name: string;
-	email: string;
 }
 
 export interface IStudentMockData {

@@ -27,32 +27,34 @@ export function App(): ReactElement {
 
 	// fetch functions here before context
 	// lärare: api/courses (ger lista av alla kurser med tomma modul och activities arrayer)
-	const fetchCourses = async (): Promise<void> => {
+	const fetchCourses = async (): Promise<IBasicCourseInfo[] | null> => {
 		setIsLoading(true);
 		try {
 			const response = await fetch("https://localhost:7049/api/Courses"); // fetch the api endpoint
-			const data = await response.json(); // parse to json
+			const data: IBasicCourseInfo[] = await response.json(); // parse to json
 			console.log(data); // data variable will now keep the response object
+			return data;
 		}
 		catch (error) {
 			console.error("Error fetching the api, error: ", error);
-			return;
+			return null;
 		}
 		finally {
 			setIsLoading(false);
 		}
 	}
 	// lärare: api/courses/{id} (ger detaljerad info när vi klickat på en kurs inne på teacher dashboard)
-	const fetchCoursesById = async (): Promise<void> => {
+	const fetchCoursesById = async (): Promise<IDetailedCourse | null> => {
 		setIsLoading(true);
 		try {
 			const response = await fetch("https://localhost:7049/api/Courses/5ae7fef5-a445-41ec-08db-08dcdc786974"); // fetch the api endpoint
-			const data = await response.json(); // parse to json
+			const data: IDetailedCourse = await response.json(); // parse to json
 			console.log(data); // data variable will now keep the response object
+			return data;
 		}
 		catch (error) {
 			console.error("Error fetching the api, error: ", error);
-			return;
+			return null;
 		}
 		finally {
 			setIsLoading(false);
