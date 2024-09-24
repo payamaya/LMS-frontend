@@ -43,6 +43,21 @@ export function App(): ReactElement {
 		}
 	}
 	// lärare: api/courses/{id} (ger detaljerad info när vi klickat på en kurs inne på teacher dashboard)
+	const fetchCoursesById = async (): Promise<void> => {
+		setIsLoading(true);
+		try {
+			const response = await fetch("https://localhost:7049/api/Courses/5ae7fef5-a445-41ec-08db-08dcdc786974"); // fetch the api endpoint
+			const data = await response.json(); // parse to json
+			console.log(data); // data variable will now keep the response object
+		}
+		catch (error) {
+			console.error("Error fetching the api, error: ", error);
+			return;
+		}
+		finally {
+			setIsLoading(false);
+		}
+	}
 	// student: api/user/{token} token som input parameter någonstans, ska ge ungefär samma json svar som raden ovan
 
 	// context
@@ -63,6 +78,7 @@ export function App(): ReactElement {
 			<main className="main-content">
 				<Outlet context={mockContext} />
 				<button type="button" onClick={fetchCourses}>fetcha</button>
+				<button type="button" onClick={fetchCoursesById}>fetcha by id</button>
 			</main>
 		</div >
 	)
