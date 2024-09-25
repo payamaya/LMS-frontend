@@ -1,25 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IBasicCourseInfo, IDetailedCourse } from "../interfaces.ts";
-
-export interface IStudentMockData {
-	userId: number;
-	name: string;
-	email: string;
-	course: IDetailedCourse;
-}
-
-export interface IContext {
-	studentMockData: IStudentMockData | null;
-	teacherBasicData: IBasicCourseInfo[] | null;
-	activeCourse: IBasicCourseInfo | null;
-	detailedCourse: IDetailedCourse | null;
-	isLoading: boolean;
-	toggleActiveCourse: (id: string) => void;
-	fetchCourses: () => Promise<void>
-	fetchCoursesById: (id: string) => Promise<void>
-}
+import { IBasicCourseInfo, IContext, IDetailedCourse, IStudentMockData } from "../interfaces.ts";
 
 export function App(): ReactElement {
 	const location = useLocation();

@@ -44,3 +44,21 @@ export interface IUser {
 	id: string;
 	name: string;
 }
+
+export interface IStudentMockData {
+	userId: number;
+	name: string;
+	email: string;
+	course: IDetailedCourse;
+}
+
+export interface IContext {
+	studentMockData: IStudentMockData | null;
+	teacherBasicData: IBasicCourseInfo[] | null;
+	activeCourse: IBasicCourseInfo | null;
+	detailedCourse: IDetailedCourse | null;
+	isLoading: boolean;
+	toggleActiveCourse: (id: string) => void;
+	fetchCourses: () => Promise<void>
+	fetchCoursesById: (id: string) => Promise<void>
+}
