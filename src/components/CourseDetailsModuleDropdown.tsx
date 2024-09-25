@@ -8,8 +8,6 @@ interface ICourseDetailsModuleDropdownProps {
 export function CourseDetailsModuleDropdown({ module }: ICourseDetailsModuleDropdownProps): ReactElement {
 	const [isOpen, setIsOpen] = useState(false);
 
-	console.log(module);
-
 	// AI Helper function to calculate the time duration
 	const calculateDuration = (startTime: string, endTime: string): string => {
 		const start = new Date(startTime);
@@ -44,7 +42,7 @@ export function CourseDetailsModuleDropdown({ module }: ICourseDetailsModuleDrop
 			{isOpen && (
 				<ul className="g-list">
 					{module.activities.map((activity) => (
-						<li className="g-text">
+						<li key={activity.id} className="g-text">
 							<span>{activity.activityName}</span>
 							<span>Duration: {calculateDuration(activity.startTime, activity.endTime)}</span>
 						</li>
