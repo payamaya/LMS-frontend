@@ -1,12 +1,10 @@
 export interface IActivity {
 	id: string;
-	moduleId: string;
 	activityName: string;
 	description: string;
 	startTime: string;
 	endTime: string;
 	activityType: IActivityType;
-	activityTypeId: string;
 }
 
 export interface IActivityType {
@@ -18,8 +16,8 @@ export interface IBasicCourseInfo {
 	id: string,
 	courseName: string,
 	description: string,
-	startDate: string
-	teacher: string,
+	startDate: string,
+	teacher: IUser
 }
 
 export interface IDetailedCourse {
@@ -27,13 +25,13 @@ export interface IDetailedCourse {
 	courseName: string;
 	description: string;
 	startDate: string;
-	users: IUser[];
+	teacher: IUser;
+	students: IUser[];
 	modules: IModule[];
 }
 
 export interface IModule {
 	id: string;
-	courseId: string;
 	moduleName: string;
 	description: string;
 	startDate: string;
