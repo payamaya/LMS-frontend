@@ -8,8 +8,9 @@ import { IContext } from "./App";
 export function CourseDetailsCard(): ReactElement {
 	const { detailedCourse }: IContext = useOutletContext<IContext>();
 
-	const studentCount: number | undefined = detailedCourse?.users.length;
-	const students: IUser[] | undefined = detailedCourse?.users;
+	const studentCount: number | undefined = detailedCourse?.students.length;
+
+	const students: IUser[] | undefined = detailedCourse?.students;
 	const modules: IModule[] | undefined = detailedCourse?.modules;
 
 	if (detailedCourse == null) {
