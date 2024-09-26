@@ -24,10 +24,10 @@ export interface IDetailedCourse {
 	id: string;
 	courseName: string;
 	description: string;
+	modules: IModule[];
+	students: IUser[];
 	startDate: string;
 	teacher: IUser;
-	students: IUser[];
-	modules: IModule[];
 }
 
 export interface IModule {
@@ -45,22 +45,15 @@ export interface IUser {
 	name: string;
 }
 
-export interface IStudentMockData {
-	userId: number;
-	name: string;
-	email: string;
-	course: IDetailedCourse;
-}
-
 export interface IContext {
-	studentMockData: IStudentMockData | null;
 	teacherBasicData: IBasicCourseInfo[] | null;
 	activeCourse: IBasicCourseInfo | null;
 	detailedCourse: IDetailedCourse | null;
 	isLoading: boolean;
 	toggleActiveCourse: (id: string) => void;
 	fetchCourses: () => Promise<void>
-	fetchCoursesById: (id: string) => Promise<void>
+	fetchCoursesById: (id: string) => Promise<void>,
+	fetchCourseForStudent: () => Promise<void>
 }
 
 export interface IAuthContext {
