@@ -1,9 +1,6 @@
 import { ReactElement } from "react";
-import { useOutletContext } from "react-router-dom";
-import { IContext } from "../utils/interfaces";
-
 export function StudentActivityScheduleCard(): ReactElement {
-	const { studentMockData } = useOutletContext<IContext>();
+	// const { studentMockData } = useOutletContext<IContext>();
 
 	// AI Helper function to calculate the time duration
 	const calculateDuration = (startTime: string, endTime: string): string => {
@@ -31,24 +28,25 @@ export function StudentActivityScheduleCard(): ReactElement {
 	};
 
 	return (
-		<div className="g-card">
-			<h2 className="g-card-header">Activity Schedule</h2>
-			<p className="g-text-subheading">Your upcoming activities</p>
-			<div className="scrollable-content">
-				<ul className="g-list">
-					{studentMockData.course.modules
-						.filter((module) => module.state === "in-progress")
-						.map((module) =>
-							module.activities.map((activity) => (
-								<li key={activity.activityId} className="g-list-item">
-									<h3 className="g-list-item-header">{activity.activityName}</h3>
-									<p className="g-list-item-text">{new Date(activity.startTime).toLocaleString()}</p>
-									<p className="g-list-item-text">Duration: {calculateDuration(activity.startTime, activity.endTime)}</p>
-								</li>
-							))
-						)}
-				</ul>
-			</div>
-		</div>
+		<div>Hejsan</div>
+		// <div className="g-card">
+		// 	<h2 className="g-card-header">Activity Schedule</h2>
+		// 	<p className="g-text-subheading">Your upcoming activities</p>
+		// 	<div className="scrollable-content">
+		// 		<ul className="g-list">
+		// 			{studentMockData.course.modules
+		// 				.filter((module) => module.state === "in-progress")
+		// 				.map((module) =>
+		// 					module.activities.map((activity) => (
+		// 						<li key={activity.activityId} className="g-list-item">
+		// 							<h3 className="g-list-item-header">{activity.activityName}</h3>
+		// 							<p className="g-list-item-text">{new Date(activity.startTime).toLocaleString()}</p>
+		// 							<p className="g-list-item-text">Duration: {calculateDuration(activity.startTime, activity.endTime)}</p>
+		// 						</li>
+		// 					))
+		// 				)}
+		// 		</ul>
+		// 	</div>
+		// </div>
 	);
 }
