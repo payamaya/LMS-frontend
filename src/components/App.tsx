@@ -4,6 +4,7 @@ import { Navbar } from "./Navbar";
 import { IBasicCourseInfo, IContext, IDetailedCourse, IStudentMockData, ITokens } from "../utils/interfaces.ts";
 import { BASE_URL } from "../utils/constants.ts";
 import { CustomError } from "../utils/classes.ts";
+import { AuthProvider } from "../context/authProvider.tsx";
 
 export function App(): ReactElement {
 	const location = useLocation();
@@ -71,19 +72,21 @@ export function App(): ReactElement {
 		detailedCourse,
 		toggleActiveCourse,
 		fetchCourses,
-		fetchCoursesById
+		fetchCoursesById,
 		//future API call functions here to pass down
 	};
 
 	return (
-		<div className="app">
-			{location.pathname !== "/" && <Navbar />}
-			<main className="main-content">
-				<Outlet context={context} />
-				<button type="button" onClick={fetchCourses}>
-					fetcha
-				</button>
-			</main>
-		</div>
+		<AuthProvider>
+			<div className="app">
+				{location.pathname !== "/" && <Navbar />}
+				<main className="main-content">
+					<Outlet context={context} />
+					<button type="button" onClick={fetchCourses}>
+						fetcha
+					</button>
+				</main>
+			</div>
+		</AuthProvider>
 	);
 }
