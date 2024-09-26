@@ -1,6 +1,7 @@
 import { FormEventHandler, ReactElement, useContext, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authProvider";
+import { jwtDecode } from "jwt-decode";
 
 export function LoginPage(): ReactElement {
 	const [username, setUsername] = useState<string>("");
@@ -9,6 +10,31 @@ export function LoginPage(): ReactElement {
 	const navigate = useNavigate();
 
 	if (isLoggedIn) {
+		const token = localStorage.getItem('tokens');
+		if (token) {
+			const decodedToken = jwtDecode(token);
+			console.log(decodedToken);
+			console.log(decodedToken.aud);
+			console.log(decodedToken.exp);
+			console.log(decodedToken.iat?.toString());
+			console.log(decodedToken.iss);
+			console.log(decodedToken.jti);
+			console.log(decodedToken.nbf);
+			console.log(decodedToken.sub);
+			// const userRole = decodedToken.;
+	   
+	   
+		// 	if (userRole === 'Admin') {
+		// 	  navigate('/admin-dashboard');
+		// 	} else if (userRole === 'User') {
+		// 	  navigate('/user-dashboard');
+		// 	} else {
+		// 	  navigate('/login');
+		// 	}
+		//   } else {
+		// 	navigate('/login'); 
+
+		  }
 		return <Navigate to="/teacher" replace />;
 	}
 
