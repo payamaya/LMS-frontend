@@ -1,6 +1,9 @@
 import { createContext, ReactElement, ReactNode, useEffect, useState } from "react";
-import { CustomError, IAuthContext, ITokens, loginReq, TOKENS } from "../utils";
 import { useLocalStorage } from "usehooks-ts";
+import { IAuthContext, ITokens } from "../utils/interfaces";
+import { TOKENS } from "../utils/constants";
+import { loginReq } from "../utils/requests";
+import { CustomError } from "../utils/classes";
 
 interface IAuthProviderProps {
   children: ReactNode;
