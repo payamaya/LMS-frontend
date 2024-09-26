@@ -62,3 +62,14 @@ export interface IContext {
 	fetchCourses: () => Promise<void>
 	fetchCoursesById: (id: string) => Promise<void>
 }
+
+export interface IAuthContext {
+	isLoggedIn: boolean;
+	login: (username: string, password: string) => Promise<void>;
+	logout: () => void;
+}
+
+export interface ITokens {
+	accessToken: string;
+	refreshToken: string;
+}

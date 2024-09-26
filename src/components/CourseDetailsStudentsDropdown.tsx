@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import { IUser } from "../interfaces";
+import { IUser } from "../utils/interfaces";
 
 interface ICourseDetailsStudentsDropdownProps {
 	students: IUser[] | undefined;
@@ -17,7 +17,9 @@ export function CourseDetailsStudentsDropdown({ students }: ICourseDetailsStuden
 			{isOpen && (
 				<ul className="g-list">
 					{students?.map((user) => (
-						<li key={user.id} className="g-text">{user.name}</li>
+						<li key={user.id} className="g-text">
+							{user.name}
+						</li>
 					))}
 				</ul>
 			)}

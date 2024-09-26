@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import { IModule } from "../interfaces";
+import { IModule } from "../utils/interfaces";
 
 interface ICourseDetailsModuleDropdownProps {
 	module: IModule;

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useOutletContext } from "react-router-dom";
-import { IContext } from "../interfaces";
+import { IContext } from "../utils/interfaces";
 import { CourseDetailsStudentsDropdown } from "../components/CourseDetailsStudentsDropdown";
 
 export function StudentCourseCard(): ReactElement {
@@ -32,9 +32,7 @@ export function StudentCourseCard(): ReactElement {
 				{studentMockData.course.modules.map((module) => (
 					<li key={module.moduleId} className="course-modules-list-item">
 						<span className="g-text">{module.moduleName}</span>
-						<span className={`g-text ${module.state}`}>
-							{getModuleStateLabel(module.state)}
-						</span>
+						<span className={`g-text ${module.state}`}>{getModuleStateLabel(module.state)}</span>
 					</li>
 				))}
 			</ul>

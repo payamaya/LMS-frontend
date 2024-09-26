@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import { IBasicCourseInfo, IContext } from "../interfaces";
+import { IBasicCourseInfo, IContext } from "../utils/interfaces";
 import CourseItem from "./CourseItem";
 import { useEffect } from "react";
 

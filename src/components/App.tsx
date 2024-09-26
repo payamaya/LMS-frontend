@@ -1,7 +1,8 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IBasicCourseInfo, IContext, IDetailedCourse, IStudentMockData } from "../interfaces.ts";
+import { IBasicCourseInfo, IContext, IDetailedCourse, IStudentMockData } from "../utils/interfaces.ts";
+import { BASE_URL } from "../utils/constants.ts";
 
 export function App(): ReactElement {
 	const location = useLocation();
@@ -28,40 +29,35 @@ export function App(): ReactElement {
 		}
 	}, [activeCourse]);
 
-
 	// fetch functions here before context
 	// lärare: api/courses (ger lista av alla kurser med tomma modul och activities arrayer)
 	const fetchCourses = async (): Promise<void> => {
 		setIsLoading(true);
 		try {
-			const response = await fetch("https://localhost:7049/api/courses"); // fetch the api endpoint
+			const response = await fetch(`${BASE_URL}/courses`); // fetch the api endpoint
 			const data: IBasicCourseInfo[] = await response.json(); // parse to json
 			//console.log(data); // data variable will now keep the response object
 			setTeacherBasicData(data);
-		}
-		catch (error) {
+		} catch (error) {
 			console.error("Error fetching the api, error: ", error);
-		}
-		finally {
+		} finally {
 			setIsLoading(false);
 		}
-	}
+	};
 	// lärare: api/courses/{id} (ger detaljerad info när vi klickat på en kurs inne på teacher dashboard)
 	const fetchCoursesById = async (id: string): Promise<void> => {
 		setIsLoading(true);
 		try {
-			const response = await fetch(`https://localhost:7049/api/courses/${id}`); // fetch the api endpoint
+			const response = await fetch(`${BASE_URL}/courses/${id}`); // fetch the api endpoint
 			const data: IDetailedCourse = await response.json(); // parse to json
 			//console.log(data); // data variable will now keep the response object
 			setDetailedCourse(data);
-		}
-		catch (error) {
+		} catch (error) {
 			console.error("Error fetching the api, error: ", error);
-		}
-		finally {
+		} finally {
 			setIsLoading(false);
 		}
-	}
+	};
 	// student: api/user/{token} token som input parameter någonstans, ska ge ungefär samma json svar som raden ovan
 
 	// context
@@ -73,17 +69,19 @@ export function App(): ReactElement {
 		detailedCourse,
 		toggleActiveCourse,
 		fetchCourses,
-		fetchCoursesById
+		fetchCoursesById,
 		//future API call functions here to pass down
 	};
 
 	return (
 		<div className="app">
-			{location.pathname !== '/' && <Navbar />}
+			{location.pathname !== "/" && <Navbar />}
 			<main className="main-content">
 				<Outlet context={context} />
-				<button type="button" onClick={fetchCourses}>fetcha</button>
+				<button type="button" onClick={fetchCourses}>
+					fetcha
+				</button>
 			</main>
-		</div >
-	)
+		</div>
+	);
 }

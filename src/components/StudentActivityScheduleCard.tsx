@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useOutletContext } from "react-router-dom";
-import { IContext } from "../interfaces";
+import { IContext } from "../utils/interfaces";
 
 export function StudentActivityScheduleCard(): ReactElement {
 	const { studentMockData } = useOutletContext<IContext>();
@@ -42,12 +42,8 @@ export function StudentActivityScheduleCard(): ReactElement {
 							module.activities.map((activity) => (
 								<li key={activity.activityId} className="g-list-item">
 									<h3 className="g-list-item-header">{activity.activityName}</h3>
-									<p className="g-list-item-text">
-										{new Date(activity.startTime).toLocaleString()}
-									</p>
-									<p className="g-list-item-text">
-										Duration: {calculateDuration(activity.startTime, activity.endTime)}
-									</p>
+									<p className="g-list-item-text">{new Date(activity.startTime).toLocaleString()}</p>
+									<p className="g-list-item-text">Duration: {calculateDuration(activity.startTime, activity.endTime)}</p>
 								</li>
 							))
 						)}

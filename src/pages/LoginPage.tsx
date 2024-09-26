@@ -1,11 +1,18 @@
 import { ReactElement, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export function LoginPage(): ReactElement {
 	const [loginDetails, setLoginDetails] = useState({
 		username: "",
 		password: "",
 	});
+	const { isLoggedIn, login } = useAuthContext();
+	const navigate = useNavigate();
+  
+	if (isLoggedIn) {
+	  return <Navigate to="/" replace />;
+	}
 
 	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();

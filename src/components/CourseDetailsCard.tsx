@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { CourseDetailsModuleDropdown } from "./CourseDetailsModuleDropdown";
 import { CourseDetailsStudentsDropdown } from "./CourseDetailsStudentsDropdown";
-import { IContext, IModule, IUser } from "../interfaces";
+import { IContext, IModule, IUser } from "../utils/interfaces";
 import { useOutletContext } from "react-router-dom";
 
 export function CourseDetailsCard(): ReactElement {

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { IBasicCourseInfo } from "../interfaces";
+import { IBasicCourseInfo } from "../utils/interfaces";
 
 interface ICourseItem {
 	data: IBasicCourseInfo;
