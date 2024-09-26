@@ -9,7 +9,11 @@ interface IAuthProviderProps {
   children: ReactNode;
 }
 
-export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
+export const AuthContext = createContext<IAuthContext>({
+  isLoggedIn: false,
+  login: async () => { },
+  logout: () => { },
+});
 
 export function AuthProvider({ children }: IAuthProviderProps): ReactElement {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
