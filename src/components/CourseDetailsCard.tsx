@@ -1,9 +1,8 @@
 import { ReactElement } from "react";
 import { CourseDetailsModuleDropdown } from "./CourseDetailsModuleDropdown";
 import { CourseDetailsStudentsDropdown } from "./CourseDetailsStudentsDropdown";
-import { IModule, IUser } from "../interfaces";
+import { IContext, IModule, IUser } from "../interfaces";
 import { useOutletContext } from "react-router-dom";
-import { IContext } from "./App";
 
 export function CourseDetailsCard(): ReactElement {
 	const { detailedCourse }: IContext = useOutletContext<IContext>();
