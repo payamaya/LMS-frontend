@@ -1,8 +1,7 @@
 import { useOutletContext } from "react-router-dom";
-import { IBasicCourseInfo } from "../interfaces";
+import { IBasicCourseInfo, IContext } from "../interfaces";
 import CourseItem from "./CourseItem";
 import { useEffect } from "react";
-import { IContext } from "./App";
 
 export default function CourseListCard() {
 	const { teacherBasicData, toggleActiveCourse, activeCourse, fetchCourses }: IContext = useOutletContext<IContext>();
