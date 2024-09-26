@@ -1,8 +1,9 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IBasicCourseInfo, IContext, IDetailedCourse, IStudentMockData } from "../utils/interfaces.ts";
+import { IBasicCourseInfo, IContext, IDetailedCourse, IStudentMockData, ITokens } from "../utils/interfaces.ts";
 import { BASE_URL } from "../utils/constants.ts";
+import { CustomError } from "../utils/classes.ts";
 
 export function App(): ReactElement {
 	const location = useLocation();
@@ -58,6 +59,7 @@ export function App(): ReactElement {
 			setIsLoading(false);
 		}
 	};
+
 	// student: api/user/{token} token som input parameter någonstans, ska ge ungefär samma json svar som raden ovan
 
 	// context
@@ -69,7 +71,7 @@ export function App(): ReactElement {
 		detailedCourse,
 		toggleActiveCourse,
 		fetchCourses,
-		fetchCoursesById,
+		fetchCoursesById
 		//future API call functions here to pass down
 	};
 
