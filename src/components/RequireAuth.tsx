@@ -10,7 +10,7 @@ export function RequireAuth({ children }: IRequireAuthProps): ReactElement {
   const { isLoggedIn } = useContext(AuthContext);
 
   if (isLoggedIn === false) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   return children;
