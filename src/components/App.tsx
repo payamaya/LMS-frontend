@@ -1,14 +1,12 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IBasicCourseInfo, IContext, IDetailedCourse, IStudentMockData, ITokens } from "../utils/interfaces.ts";
+import { IBasicCourseInfo, IContext, IDetailedCourse, ITokens } from "../utils/interfaces.ts";
 import { BASE_URL } from "../utils/constants.ts";
-import { CustomError } from "../utils/classes.ts";
 import { AuthProvider } from "../context/authProvider.tsx";
 
 export function App(): ReactElement {
 	const location = useLocation();
-	const [studentMockData, setStudentMockData] = useState<IStudentMockData | null>(null);
 	const [teacherBasicData, setTeacherBasicData] = useState<IBasicCourseInfo[] | null>(null);
 	const [activeCourse, setActiveCourse] = useState<IBasicCourseInfo | null>(null);
 	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse | null>(null);
@@ -52,7 +50,7 @@ export function App(): ReactElement {
 		try {
 			const response = await fetch(`${BASE_URL}/courses/${id}`); // fetch the api endpoint
 			const data: IDetailedCourse = await response.json(); // parse to json
-			//console.log(data); // data variable will now keep the response object
+			console.log(data); // data variable will now keep the response object
 			setDetailedCourse(data);
 		} catch (error) {
 			console.error("Error fetching the api, error: ", error);
@@ -61,11 +59,34 @@ export function App(): ReactElement {
 		}
 	};
 
-	// student: api/user/{token} token som input parameter någonstans, ska ge ungefär samma json svar som raden ovan
+	const fetchCourseForStudent = async (): Promise<void> => {
+		setIsLoading(true);
+		try {
+			const token: any | null = localStorage.getItem("tokens");
+
+			const parsedToken: ITokens = JSON.parse(token);
+			const headers: HeadersInit = {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${parsedToken.accessToken}`,
+			};
+
+			const response = await fetch(`${BASE_URL}/Courses/Student`, {
+				method: "GET",
+				headers: headers,
+			});
+			const data: IDetailedCourse = await response.json();
+			setDetailedCourse(data);
+			
+		} catch (error) {
+			console.error("Error fetching the api, error: ", error);
+		} finally {
+			setIsLoading(false);
+		}
+	};
 
 	// context
 	const context: IContext = {
-		studentMockData,
 		teacherBasicData,
 		isLoading,
 		activeCourse,
@@ -73,7 +94,7 @@ export function App(): ReactElement {
 		toggleActiveCourse,
 		fetchCourses,
 		fetchCoursesById,
-		//future API call functions here to pass down
+		fetchCourseForStudent,
 	};
 
 	return (
@@ -82,7 +103,7 @@ export function App(): ReactElement {
 				{location.pathname !== "/" && <Navbar />}
 				<main className="main-content">
 					<Outlet context={context} />
-					<button type="button" onClick={fetchCourses}>
+					<button type="button" onClick={fetchCourseForStudent}>
 						fetcha
 					</button>
 				</main>
