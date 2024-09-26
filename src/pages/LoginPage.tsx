@@ -15,13 +15,9 @@ export function LoginPage(): ReactElement {
 			if (token) {
 				const decodedToken: any = jwtDecode(token);
 				const userRole: string = decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-				console.log(userRole);
 
-				if (userRole === "Teacher") {
-					navigate("/teacher");
-				} else if (userRole === "Student") {
-					navigate("/student");
-				}
+				navigate(`/${userRole.toLowerCase()}`);
+
 			} else {
 				navigate("/");
 			}

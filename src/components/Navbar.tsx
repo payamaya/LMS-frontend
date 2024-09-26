@@ -1,7 +1,10 @@
-import { ReactElement } from "react";
+import { ReactElement, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authProvider";
 
 export function Navbar(): ReactElement {
+	const {logout} = useContext(AuthContext);
+
 	return (
 		<header className="navbar">
 			<Link to="/" className="navbar-link-home">
@@ -12,7 +15,7 @@ export function Navbar(): ReactElement {
 				<Link to="/teacher" className="navbar-link-teacher-dashboard">Teacher Dashboard</Link>
 				<Link to="/course/1" className="navbar-link-course-details">Course Details 1</Link>
 			</nav>
-			<button type="button" onClick={() => (console.log("logout clicked"))} className="navbar-button-logout">Logout</button>
+			<button type="button" onClick={logout} className="navbar-button-logout">Logout</button>
 		</header>
 	);
 }
