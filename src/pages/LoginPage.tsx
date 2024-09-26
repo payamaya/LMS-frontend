@@ -1,29 +1,31 @@
-import { ReactElement, useState } from "react";
+import { FormEventHandler, ReactElement, useContext, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { AuthContext } from "../context/authProvider";
 
 export function LoginPage(): ReactElement {
 	const [loginDetails, setLoginDetails] = useState({
 		username: "",
 		password: "",
 	});
-	const { isLoggedIn, login } = useAuthContext();
+	const { isLoggedIn, login } = useContext(AuthContext);
 	const navigate = useNavigate();
   
 	if (isLoggedIn) {
-	  return <Navigate to="/" replace />;
+	  return <Navigate to="/student" replace />;
 	}
 
-	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
 		e.preventDefault();
-		console.log(loginDetails);
-	};
+	
+		await login(loginDetails.username, loginDetails.password);
+		navigate("/student");
+	  };
 
 	return (
 		<div className="login-page-container">
 			<div className="login-page">
 				<div className="login-page-title">Login</div>
-				<form className="login-page-form">
+				<form className="login-page-form" onSubmit={handleSubmit}>
 					<input type="text" className="login-page-input" placeholder="Username" value={loginDetails.username} onChange={(e) => setLoginDetails({ ...loginDetails, username: e.target.value })} />
 					<input
 						type="password"
@@ -37,7 +39,7 @@ export function LoginPage(): ReactElement {
 							})
 						}
 					/>
-					<button type="submit" className="login-page-button" onClick={handleSubmit}>
+					<button type="submit" className="login-page-button">
 						Submit
 					</button>
 				</form>
