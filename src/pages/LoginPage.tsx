@@ -5,7 +5,7 @@ import { AuthContext } from "../context/authProvider";
 export function LoginPage(): ReactElement {
 	const [username, setUsername] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const { isLoggedIn, login } = useContext(AuthContext);
+	const { isLoggedIn, login} = useContext(AuthContext);
 	const navigate = useNavigate();
 
 	if (isLoggedIn) {
