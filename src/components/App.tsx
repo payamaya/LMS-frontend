@@ -12,7 +12,6 @@ export function App(): ReactElement {
 	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-	// changes which course is active (clicked)
 	const toggleActiveCourse = (id: string): void => {
 		if (teacherBasicData != null) {
 			const selectedCourse = teacherBasicData.find((course) => course.id === id);
@@ -29,14 +28,24 @@ export function App(): ReactElement {
 		}
 	}, [activeCourse]);
 
-	// fetch functions here before context
-	// lärare: api/courses (ger lista av alla kurser med tomma modul och activities arrayer)
 	const fetchCourses = async (): Promise<void> => {
 		setIsLoading(true);
 		try {
-			const response = await fetch(`${BASE_URL}/courses`); // fetch the api endpoint
-			const data: IBasicCourseInfo[] = await response.json(); // parse to json
-			//console.log(data); // data variable will now keep the response object
+			const token: any | null = localStorage.getItem("tokens");
+			const parsedToken: ITokens = JSON.parse(token);
+
+			const headers: HeadersInit = {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${parsedToken.accessToken}`,
+			};
+
+			const response = await fetch(`${BASE_URL}/courses`, {
+				method: "GET",
+				headers: headers,
+			});
+			const data: IBasicCourseInfo[] = await response.json();
+
 			setTeacherBasicData(data);
 		} catch (error) {
 			console.error("Error fetching the api, error: ", error);
@@ -44,13 +53,25 @@ export function App(): ReactElement {
 			setIsLoading(false);
 		}
 	};
-	// lärare: api/courses/{id} (ger detaljerad info när vi klickat på en kurs inne på teacher dashboard)
+
 	const fetchCoursesById = async (id: string): Promise<void> => {
 		setIsLoading(true);
 		try {
-			const response = await fetch(`${BASE_URL}/courses/${id}`); // fetch the api endpoint
-			const data: IDetailedCourse = await response.json(); // parse to json
-			console.log(data); // data variable will now keep the response object
+			const token: any | null = localStorage.getItem("tokens");
+			const parsedToken: ITokens = JSON.parse(token);
+
+			const headers: HeadersInit = {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${parsedToken.accessToken}`,
+			};
+
+			const response = await fetch(`${BASE_URL}/courses/${id}`, {
+				method: "GET",
+				headers: headers,
+			});
+
+			const data: IDetailedCourse = await response.json();
 			setDetailedCourse(data);
 		} catch (error) {
 			console.error("Error fetching the api, error: ", error);
@@ -63,8 +84,8 @@ export function App(): ReactElement {
 		setIsLoading(true);
 		try {
 			const token: any | null = localStorage.getItem("tokens");
-
 			const parsedToken: ITokens = JSON.parse(token);
+
 			const headers: HeadersInit = {
 				"Content-Type": "application/json",
 				Accept: "application/json",
@@ -75,9 +96,9 @@ export function App(): ReactElement {
 				method: "GET",
 				headers: headers,
 			});
+      
 			const data: IDetailedCourse = await response.json();
 			setDetailedCourse(data);
-			
 		} catch (error) {
 			console.error("Error fetching the api, error: ", error);
 		} finally {
