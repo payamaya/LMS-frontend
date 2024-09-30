@@ -62,6 +62,7 @@ export function App(): ReactElement {
 	const fetchCourseForStudent = async (): Promise<void> => {
 		setIsLoading(true);
 		try {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const token: any | null = localStorage.getItem("tokens");
 
 			const parsedToken: ITokens = JSON.parse(token);
