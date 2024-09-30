@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/authProvider'
 import { jwtDecode } from 'jwt-decode'
 
@@ -63,8 +63,6 @@ export function LoginPage(): ReactElement {
           </button>
         </form>
       </div>
-      <Link to='/student'>To Student Dashboard</Link>
-      <Link to='/teacher'>To Teacher Dashboard</Link>
     </div>
   )
 }
