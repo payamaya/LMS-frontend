@@ -96,7 +96,7 @@ export function App(): ReactElement {
 				method: "GET",
 				headers: headers,
 			});
-      
+
 			const data: IDetailedCourse = await response.json();
 			setDetailedCourse(data);
 		} catch (error) {
@@ -124,9 +124,6 @@ export function App(): ReactElement {
 				{location.pathname !== "/" && <Navbar />}
 				<main className="main-content">
 					<Outlet context={context} />
-					<button type="button" onClick={fetchCourseForStudent}>
-						fetcha
-					</button>
 				</main>
 			</div>
 		</AuthProvider>
