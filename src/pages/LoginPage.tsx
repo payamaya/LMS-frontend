@@ -1,42 +1,68 @@
-import { ReactElement, useState } from "react";
-import { Link } from "react-router-dom";
+import {
+  FormEventHandler,
+  ReactElement,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/authProvider'
+import { jwtDecode } from 'jwt-decode'
 
 export function LoginPage(): ReactElement {
-	const [loginDetails, setLoginDetails] = useState({
-		username: "",
-		password: "",
-	});
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const { isLoggedIn, login } = useContext(AuthContext)
+  const navigate = useNavigate()
 
-	const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		console.log(loginDetails);
-	};
+  useEffect(() => {
+    if (isLoggedIn) {
+      const token = localStorage.getItem('tokens')
+      if (token) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const decodedToken: any = jwtDecode(token)
+        const userRole: string =
+          decodedToken[
+            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+          ]
 
-	return (
-		<div className="login-page-container">
-			<div className="login-page">
-				<div className="login-page-title">Login</div>
-				<form className="login-page-form">
-					<input type="text" className="login-page-input" placeholder="Username" value={loginDetails.username} onChange={(e) => setLoginDetails({ ...loginDetails, username: e.target.value })} />
-					<input
-						type="password"
-						className="login-page-input"
-						placeholder="Password"
-						value={loginDetails.password}
-						onChange={(e) =>
-							setLoginDetails({
-								...loginDetails,
-								password: e.target.value,
-							})
-						}
-					/>
-					<button type="submit" className="login-page-button" onClick={handleSubmit}>
-						Submit
-					</button>
-				</form>
-			</div>
-			<Link to="/student">To Student Dashboard</Link>
-			<Link to="/teacher">To Teacher Dashboard</Link>
-		</div>
-	);
+        navigate(`/${userRole.toLowerCase()}`)
+      } else {
+        navigate('/')
+      }
+    }
+  }, [isLoggedIn, navigate])
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault()
+
+    await login(username, password)
+  }
+
+  return (
+    <div className='login-page-container'>
+      <div className='login-page'>
+        <div className='login-page-title'>Login</div>
+        <form className='login-page-form' onSubmit={handleSubmit}>
+          <input
+            type='text'
+            className='login-page-input'
+            placeholder='Username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type='password'
+            className='login-page-input'
+            placeholder='Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type='submit' className='login-page-button'>
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  )
 }

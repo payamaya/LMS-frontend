@@ -1,3 +1,103 @@
+/* Skeleton styles for each item while loading */
+.isLoading {
+	background-color: #e4e2e2;
+	border-radius: var(--border-radius);
+	padding: 1rem;
+	margin-bottom: 1rem;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.isLoading::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg,
+			rgba(255, 255, 255, 0) 0%,
+			rgba(255, 255, 255, 0.4) 50%,
+			rgba(255, 255, 255, 0) 100%);
+	animation: loadingPulse 1.5s infinite;
+}
+
+.isLoading-text {
+	height: 1.5rem;
+	background-color: #ccc;
+	margin-bottom: 0.5rem;
+	border-radius: 4px;
+}
+
+.isLoading-header {
+	width: 60%;
+	height: 2rem;
+	background-color: #ddd;
+}
+
+.isLoading-date {
+	width: 40%;
+	height: 1.25rem;
+}
+
+.isLoading-teacher {
+	width: 30%;
+	height: 1.25rem;
+}
+
+@keyframes loadingPulse {
+	0% {
+		transform: translateX(-100%);
+	}
+
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+	width: 15px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	animation: l5 1s infinite linear alternate;
+}
+
+@keyframes l5 {
+	0% {
+		box-shadow: 20px 0 #000, -20px 0 #0002;
+		background: #000;
+	}
+
+	33% {
+		box-shadow: 20px 0 #000, -20px 0 #0002;
+		background: #0002;
+	}
+
+	66% {
+		box-shadow: 20px 0 #0002, -20px 0 #000;
+		background: #0002;
+	}
+
+	100% {
+		box-shadow: 20px 0 #0002, -20px 0 #000;
+		background: #000;
+	}
+}
+
+.course-modules-list-item {
+	height: 50px;
+	/* Set an appropriate height based on your design */
+	display: flex;
+	justify-content: space-between;
+	/* Align items nicely */
+	padding: 1rem;
+}
+
 .g-container {
 	padding-inline: 10rem;
 }
@@ -38,6 +138,7 @@
 	border-radius: var(--border-radius);
 	margin-bottom: 1rem;
 	padding: 1rem;
+	cursor: pointer;
 }
 
 .g-list-item-header {
@@ -65,5 +166,55 @@
 }
 
 .g-active {
+	background-color: var(--color-neutral);
+}
+
+.dropdown-toggle {
+	background-color: var(--color-accent);
+	color: white;
+	border: none;
+	border-radius: var(--border-radius);
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+	background-color: var(--color-accent-dark);
+	/* Darker shade on hover */
+}
+
+.dropdown-content {
+	max-height: 0;
+	/* Collapsed state */
+	overflow: hidden;
+	/* Hide overflow */
+	transition: max-height 0.3s ease, opacity 0.3s ease;
+	/* Smooth transition */
+	opacity: 0;
+	/* Hidden state */
+}
+
+.dropdown-content.open {
+	max-height: 200px;
+	/* Expanded state (adjust as needed) */
+	opacity: 1;
+	/* Fully visible */
+}
+
+.student-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.student-item {
+	padding: 0.5rem;
+	border-bottom: 1px solid var(--color-border);
+	background-color: var(--color-base);
+	transition: background-color 0.3s ease;
+}
+
+.student-item:hover {
 	background-color: var(--color-neutral);
 }
