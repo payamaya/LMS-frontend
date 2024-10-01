@@ -96,6 +96,7 @@
 	justify-content: space-between;
 	/* Align items nicely */
 	padding: 1rem;
+	cursor: pointer;
 }
 
 .g-container {

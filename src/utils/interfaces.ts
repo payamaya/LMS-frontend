@@ -50,10 +50,12 @@ export interface IContext {
   activeCourse: IBasicCourseInfo | null
   detailedCourse: IDetailedCourse | null
   isLoading: boolean
+  activeModule: IModule | null
   toggleActiveCourse: (id: string) => void
   fetchCourses: () => Promise<void>
   fetchCoursesById: (id: string) => Promise<void>
   fetchCourseForStudent: () => Promise<void>
+  setActiveModule: React.Dispatch<React.SetStateAction<IModule | null>>
 }
 
 export interface IAuthContext {

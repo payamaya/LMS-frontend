@@ -4,7 +4,7 @@ import { IContext } from "../utils/interfaces";
 import { CourseDetailsStudentsDropdown } from "../components/CourseDetailsStudentsDropdown";
 
 export function StudentCourseCard(): ReactElement {
-	const {fetchCourseForStudent, detailedCourse} = useOutletContext<IContext>();
+	const { fetchCourseForStudent, detailedCourse, setActiveModule, activeModule } = useOutletContext<IContext>();
 
 	// helper function: get state text from state
 	const getModuleStateLabel = (state: string): string => {
@@ -22,7 +22,7 @@ export function StudentCourseCard(): ReactElement {
 
 	useEffect(() => {
 		fetchCourseForStudent();
-	},[])
+	}, []);
 
 	return (
 		<div className="g-card">
@@ -34,7 +34,11 @@ export function StudentCourseCard(): ReactElement {
 			<h3 className="g-list-item-header">Modules</h3>
 			<ul className="g-list">
 				{detailedCourse?.modules.map((module) => (
-					<li key={module.id} className="course-modules-list-item">
+					<li
+						key={module.id}
+						className={`course-modules-list-item g-list-item ${module.id === activeModule?.id ? "g-active" : ""}`}
+						onClick={() => setActiveModule(module)} // Set active module on click
+					>
 						<span className="g-text">{module.moduleName}</span>
 						<span className={`g-text ${module.state}`}>{getModuleStateLabel(module.state)}</span>
 					</li>

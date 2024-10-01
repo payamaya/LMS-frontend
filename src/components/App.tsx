@@ -11,6 +11,8 @@ export function App(): ReactElement {
 	const [activeCourse, setActiveCourse] = useState<IBasicCourseInfo | null>(null);
 	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [activeModule, setActiveModule] = useState<IDetailedCourse['modules'][0] | null>(null);
+
 
 	const toggleActiveCourse = (id: string): void => {
 		if (teacherBasicData != null) {
@@ -112,11 +114,13 @@ export function App(): ReactElement {
 		isLoading,
 		activeCourse,
 		detailedCourse,
+		activeModule, // Add activeModule here
 		toggleActiveCourse,
 		fetchCourses,
 		fetchCoursesById,
 		fetchCourseForStudent,
-	};
+		setActiveModule
+	  };
 
 	return (
 		<AuthProvider>
