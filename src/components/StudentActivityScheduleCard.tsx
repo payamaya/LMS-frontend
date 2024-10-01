@@ -1,9 +1,9 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { IContext } from "../utils/interfaces";
 
 export function StudentActivityScheduleCard(): ReactElement {
-	const { detailedCourse, activeModule } = useOutletContext<IContext>();
+	const { detailedCourse, activeModule, setActiveModule } = useOutletContext<IContext>();
 
 	// AI Helper function to calculate the time duration
 	const calculateDuration = (startTime: string, endTime: string): string => {
@@ -29,6 +29,14 @@ export function StudentActivityScheduleCard(): ReactElement {
 		}
 		return `${diffInHours}h ${diffInMinutes}m`;
 	};
+
+	useEffect(() => {
+		const inProgressModule = detailedCourse?.modules.find((module) => module.state === "in-progress");
+		if (inProgressModule != undefined) {
+			setActiveModule(inProgressModule);
+		}
+	  }, [detailedCourse]);
+
 	console.log(activeModule);
 	return (
 		<div className="g-card">

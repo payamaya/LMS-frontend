@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IBasicCourseInfo, IContext, IDetailedCourse, ITokens } from "../utils/interfaces.ts";
+import { IBasicCourseInfo, IContext, IDetailedCourse, IModule, ITokens } from "../utils/interfaces.ts";
 import { BASE_URL } from "../utils/constants.ts";
 import { AuthProvider } from "../context/authProvider.tsx";
 
@@ -11,7 +11,7 @@ export function App(): ReactElement {
 	const [activeCourse, setActiveCourse] = useState<IBasicCourseInfo | null>(null);
 	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [activeModule, setActiveModule] = useState<IDetailedCourse['modules'][0] | null>(null);
+	const [activeModule, setActiveModule] = useState<IModule | null>(null);
 
 
 	const toggleActiveCourse = (id: string): void => {
