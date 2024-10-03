@@ -14,7 +14,7 @@ export default function CourseItem({ data, toggleActiveCourse, isActive }: ICour
 			<div className="g-list-item-text">
 				{new Date(data.startDate).toLocaleDateString()} - {new Date(data.startDate).toLocaleDateString()}
 			</div>
-			<div className="g-list-item-text">Teacher: {data.teacher.name}</div>
+			<div className="g-list-item-text">Teacher: {data.teacher?.name}</div>
 		</li>
 	);
 }

@@ -2,9 +2,7 @@
 import { useState, ChangeEvent, ReactElement } from 'react'
 import { ReusableBtn } from './ReusableBtn' // Import the reusable button component
 import { BASE_URL } from '../utils/constants'
-// Ensure jwt-decode is correctly imported if you decide to use it
-
-import { jwtDecode } from 'jwt-decode'
+import { ITokens } from '../utils/interfaces'
 
 interface ModalOverlayProps {
 	isOpen: boolean
@@ -16,8 +14,6 @@ interface FormData {
 	courseName: string
 	description: string
 	startDate: string
-	teacherId: string
-	teacherName: string // Added teacherName to FormData
 }
 export function ModalOverlay({
 	isOpen,
@@ -26,9 +22,7 @@ export function ModalOverlay({
 	const [formData, setFormData] = useState<FormData>({
 		courseName: '',
 		description: '',
-		startDate: '',
-		teacherId: '',
-		teacherName: '', // Initialize teacherName
+		startDate: ''
 	})
 
 	const [loading, setLoading] = useState(false)
@@ -46,9 +40,7 @@ export function ModalOverlay({
 		if (
 			!formData.courseName ||
 			!formData.description ||
-			!formData.startDate ||
-			// !formData.teacherId ||
-			!formData.teacherName // Validate teacherName
+			!formData.startDate
 		) {
 			setError('All fields are required.')
 			return false
@@ -57,33 +49,11 @@ export function ModalOverlay({
 	}
 
 	const handleSubmit = async () => {
-		const token = localStorage.getItem('tokens') // Correct token key
-		console.log('Authorization Token:', token)
+		const token: any | null = localStorage.getItem('tokens') // Correct token key
 
 		if (!token) {
+			console.log('No authorization token found. Please log in.');
 			setError('No authorization token found. Please log in.')
-			return
-		}
-
-		try {
-			const decodedToken: any = jwtDecode(token)
-			console.log('Decoded Token:', decodedToken)
-
-			// Check if token is expired
-			const currentTime = Math.floor(Date.now() / 1000)
-			if (decodedToken.exp < currentTime) {
-				setError('Token has expired. Please log in again.')
-				return
-			}
-
-			// Check if the role or permissions allow access to /courses
-			if (!decodedToken.roles.includes('Teacher')) {
-				setError('You do not have the required permissions to add a course.')
-				return
-			}
-		} catch (error) {
-			console.error('Failed to decode token:', error)
-			setError('Invalid token. Please log in again.')
 			return
 		}
 
@@ -95,22 +65,20 @@ export function ModalOverlay({
 		const courseData = {
 			CourseName: formData.courseName,
 			Description: formData.description,
-			StartDate: formData.startDate,
-			Teacher: {
-				id: formData.teacherId,
-				name: formData.teacherName,
-			},
+			StartDate: formData.startDate
 		}
 
 		console.log('Submitting Course Data:', courseData)
 
 		try {
+			const parsedToken: ITokens = JSON.parse(token);
+
 			setLoading(true)
 			const response = await fetch(`${BASE_URL}/Courses`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${token}`, // Include the token in the request
+					Authorization: `Bearer ${parsedToken.accessToken}`, // Include the token in the request
 				},
 				body: JSON.stringify(courseData),
 			})
@@ -131,9 +99,7 @@ export function ModalOverlay({
 			setFormData({
 				courseName: '',
 				description: '',
-				startDate: '',
-				teacherId: '',
-				teacherName: '',
+				startDate: ''
 			})
 		} catch (error) {
 			console.error('Unexpected error:', error)
@@ -185,33 +151,11 @@ export function ModalOverlay({
 						required
 					/>
 				</div>
-				<div className='modal-input'>
-					<label htmlFor='teacherId'>Teacher ID:</label>
-					<input
-						id='teacherId'
-						type='text'
-						name='teacherId'
-						value={formData.teacherId}
-						onChange={handleInputChange}
-						required
-					/>
-				</div>
-				<div className='modal-input'>
-					<label htmlFor='teacherName'>Teacher Name:</label>
-					<input
-						id='teacherName'
-						type='text'
-						name='teacherName'
-						value={formData.teacherName}
-						onChange={handleInputChange}
-						required
-					/>
-				</div>
 				<div className='modal-buttons'>
 					<ReusableBtn
 						className='g-button'
 						onClick={handleSubmit}
-						type='button'>
+						type='submit'>
 						<span className="material-symbols-outlined">
 							send
 						</span>
