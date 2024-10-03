@@ -1,12 +1,12 @@
 import { ReactElement } from 'react'
 import { IBasicCourseInfo } from '../utils/interfaces'
-import DeleteCourse from './DeleteResouce'
+import DeleteResource from './DeleteResouce'
 
 interface ICourseItem {
   data: IBasicCourseInfo
   toggleActiveCourse: (id: string) => void
   isActive: boolean
-  onDeleteSuccess: (deletedCourseId: string) => void // New prop for handling course deletion
+  onDeleteSuccess: (deletedCourseId: string) => void // Callback for deletion success
 }
 
 export default function CourseItem({
@@ -15,10 +15,6 @@ export default function CourseItem({
   isActive,
   onDeleteSuccess,
 }: ICourseItem): ReactElement {
-  const handleDeleteSuccess = () => {
-    onDeleteSuccess(data.id)
-  }
-
   return (
     <li
       className={`g-list-item g-border-style ${isActive ? 'g-active' : ''}`}
@@ -31,10 +27,9 @@ export default function CourseItem({
       </div>
       <div className='g-list-item-text'>Teacher: {data.teacher?.name}</div>
 
-      {/* Pass handleDeleteSuccess to DeleteCourse */}
-      <DeleteCourse
+      <DeleteResource
         resourceId={data.id}
-        onSuccess={handleDeleteSuccess}
+        onSuccess={() => onDeleteSuccess(data.id)} // Call onDeleteSuccess with the deleted course ID
         resourceType='courses'
       />
     </li>

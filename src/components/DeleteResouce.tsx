@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
-
-// BASE_URL would be your backend URL, e.g., http://localhost:5000/api
 import { BASE_URL } from '../utils/constants'
 import { ITokens } from '../utils/interfaces'
 
 interface DeleteResourceProps {
-  resourceId: string // The ID of the resource (course, module, etc.)
-  resourceType: string // The type of the resource (e.g., 'courses', 'modules', 'students', etc.)
+  resourceId: string
+  resourceType: string
   onSuccess: () => void // Callback after successful delete
 }
 
@@ -43,23 +41,17 @@ const DeleteResource: React.FC<DeleteResourceProps> = ({
 
       if (!response.ok) {
         const errorMessage = await response.text()
-        setError(
-          `Failed to delete ${resourceType.slice(0, -1)}: ${errorMessage}`
-        ) // Customize error message by resourceType
-        console.error(
-          `Error deleting ${resourceType.slice(0, -1)}: ${response.status}`
-        )
+        setError(`Failed to delete: ${errorMessage}`) // Customize error message by resourceType
+        console.error(`Error deleting: ${response.status}`)
         return
       }
 
-      console.log(`${resourceType.slice(0, -1)} deleted successfully`)
+      console.log(`${resourceType} deleted successfully`)
       setError(null) // Clear any previous errors
       onSuccess() // Trigger success callback
     } catch (err) {
-      console.error(`Error while deleting ${resourceType.slice(0, -1)}:`, err)
-      setError(
-        `An error occurred while deleting the ${resourceType.slice(0, -1)}`
-      )
+      console.error(`Error while deleting:`, err)
+      setError(`An error occurred while deleting the ${resourceType}.`)
     } finally {
       setLoading(false)
     }
