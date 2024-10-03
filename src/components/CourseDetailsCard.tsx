@@ -32,10 +32,6 @@ export function CourseDetailsCard(): ReactElement {
 			{modules?.map((module) => (
 				<CourseDetailsModuleDropdown key={module.id} module={module} />
 			))}
-			<button className="edit-button">
-				<span className="material-symbols-outlined">edit_square</span>
-				Edit Course
-			</button>
 		</div>
 	);
 }
