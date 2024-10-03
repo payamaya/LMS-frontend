@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import { IBasicCourseInfo } from '../utils/interfaces'
-import DeleteCourse from './DeleteCourse'
+import DeleteCourse from './DeleteResouce'
 
 interface ICourseItem {
   data: IBasicCourseInfo
