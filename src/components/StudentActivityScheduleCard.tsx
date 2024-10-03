@@ -35,9 +35,8 @@ export function StudentActivityScheduleCard(): ReactElement {
 		if (inProgressModule != undefined) {
 			setActiveModule(inProgressModule);
 		}
-	  }, [detailedCourse]);
+	}, [detailedCourse]);
 
-	console.log(activeModule);
 	return (
 		<div className="g-card">
 			<h2 className="g-card-header">Activity Schedule</h2>
