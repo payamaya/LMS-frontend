@@ -1,3 +1,7 @@
 .teacher-dashboard-container .g-card-header {
-	padding-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+.teacher-dashboard-btn {
+  display: flex;
+  justify-content: space-around;
 }
