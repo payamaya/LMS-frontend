@@ -2,7 +2,9 @@
 import { useState, ChangeEvent, ReactElement } from 'react'
 import { ReusableBtn } from './ReusableBtn' // Import the reusable button component
 import { BASE_URL } from '../utils/constants'
-import { ITokens } from '../utils/interfaces'
+import { IContext, ITokens } from '../utils/interfaces'
+import { useOutletContext } from 'react-router-dom'
+import { TeacherDropdown } from './TeacherDropdown'
 
 interface ModalOverlayProps {
 	isOpen: boolean
@@ -19,12 +21,12 @@ export function ModalOverlay({
 	isOpen,
 	onClose,
 }: ModalOverlayProps): ReactElement | null {
+	const { teachers }: IContext = useOutletContext<IContext>();
 	const [formData, setFormData] = useState<FormData>({
 		courseName: '',
 		description: '',
 		startDate: ''
 	})
-
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
 
@@ -150,6 +152,10 @@ export function ModalOverlay({
 						onChange={handleInputChange}
 						required
 					/>
+				</div>
+				<div className='modal-input'>
+					<label htmlFor='teacher'>Teacher</label>
+					<TeacherDropdown data={teachers} />
 				</div>
 				<div className='modal-buttons'>
 					<ReusableBtn

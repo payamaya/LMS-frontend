@@ -4,12 +4,16 @@ import { CourseDetailsCard } from '../components/CourseDetailsCard'
 import CourseListCard from '../components/CourseListCard'
 import { ReusableBtn } from '../components/ReusableBtn'
 import { ModalOverlay } from '../components/ModalOverlay'
+import { IContext } from '../utils/interfaces'
+import { useOutletContext } from 'react-router-dom'
 
 export function TeacherDashboardPage(): ReactElement {
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const { fetchTeachers }: IContext = useOutletContext<IContext>();
 
 	const handleAddClick = () => {
-		setIsModalOpen(true)
+		fetchTeachers();
+		setIsModalOpen(true);
 	}
 
 	const handleCloseModal = () => {
