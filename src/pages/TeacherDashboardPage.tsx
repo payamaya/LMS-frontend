@@ -25,9 +25,9 @@ export function TeacherDashboardPage(): ReactElement {
 		<div className='teacher-dashboard-container g-container'>
 			<section className='teacher-dashboard-section'>
 				<h1 className='g-page-header'>Teacher Dashboard</h1>
-				<ReusableBtn className="add-button" onClick={handleAddClick}>
+				<ReusableBtn className="g-button" onClick={handleAddClick}>
 					<span className="material-symbols-outlined">post_add</span>
-					Add
+					Add Course
 				</ReusableBtn>
 			</section>
 			<div className='g-page-card-container'>

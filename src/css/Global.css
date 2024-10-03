@@ -59,36 +59,6 @@
 	}
 }
 
-/* HTML: <div class="loader"></div> */
-.loader {
-	width: 15px;
-	aspect-ratio: 1;
-	border-radius: 50%;
-	animation: l5 1s infinite linear alternate;
-}
-
-@keyframes l5 {
-	0% {
-		box-shadow: 20px 0 #000, -20px 0 #0002;
-		background: #000;
-	}
-
-	33% {
-		box-shadow: 20px 0 #000, -20px 0 #0002;
-		background: #0002;
-	}
-
-	66% {
-		box-shadow: 20px 0 #0002, -20px 0 #000;
-		background: #0002;
-	}
-
-	100% {
-		box-shadow: 20px 0 #0002, -20px 0 #000;
-		background: #000;
-	}
-}
-
 .course-modules-list-item {
 	height: 50px;
 	/* Set an appropriate height based on your design */
@@ -218,4 +188,26 @@
 
 .student-item:hover {
 	background-color: var(--color-neutral);
+}
+
+.g-button {
+	align-items: center;
+	background-color: var(--color-accent);
+	border: none;
+	border-radius: var(--border-radius);
+	color: var(--color-base);
+	display: flex;
+	font: inherit;
+	font-size: var(--nav-size);
+	font-weight: var(--font-weight-fat);
+	gap: 0.5rem;
+	justify-content: space-between;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	padding: 0.5rem 0.75rem;
+}
+
+.g-button:hover {
+	background-color: var(--color-secondary);
+	cursor: pointer;
 }

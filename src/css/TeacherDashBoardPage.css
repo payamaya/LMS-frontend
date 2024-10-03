@@ -6,25 +6,3 @@
 	display: flex;
 	justify-content: space-between;
 }
-
-.add-button {
-	align-items: center;
-	background-color: var(--color-accent);
-	border: none;
-	border-radius: var(--border-radius);
-	color: var(--color-base);
-	display: flex;
-	font: inherit;
-	font-size: var(--nav-size);
-	font-weight: var(--font-weight-fat);
-	gap: 0.5rem;
-	justify-content: space-between;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
-	padding: 0.5rem 0.75rem;
-}
-
-.add-button:hover {
-	background-color: var(--color-secondary);
-	cursor: pointer;
-}
