@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, ChangeEvent, ReactElement } from 'react'
+import { useState, ChangeEvent, ReactElement, useEffect } from 'react'
 import { ReusableBtn } from './ReusableBtn' // Import the reusable button component
 import { BASE_URL } from '../utils/constants'
 import { IContext, ITokens } from '../utils/interfaces'
@@ -16,6 +16,7 @@ interface FormData {
 	courseName: string
 	description: string
 	startDate: string
+	teacherId: string
 }
 export function ModalOverlay({
 	isOpen,
@@ -25,7 +26,8 @@ export function ModalOverlay({
 	const [formData, setFormData] = useState<FormData>({
 		courseName: '',
 		description: '',
-		startDate: ''
+		startDate: '',
+		teacherId: ''
 	})
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<string | null>(null)
@@ -36,6 +38,10 @@ export function ModalOverlay({
 		const { name, value } = e.target
 		setFormData({ ...formData, [name]: value })
 	}
+
+	useEffect(() => {
+		setError(null)
+	}, [onClose]);
 
 	const validateForm = (): boolean => {
 		// Validate all form fields are filled
@@ -64,10 +70,20 @@ export function ModalOverlay({
 			return
 		}
 
-		const courseData = {
-			CourseName: formData.courseName,
-			Description: formData.description,
-			StartDate: formData.startDate
+		let courseData;
+		if (formData.teacherId === "") {
+			courseData = {
+				CourseName: formData.courseName,
+				Description: formData.description,
+				StartDate: formData.startDate
+			}
+		} else {
+			courseData = {
+				CourseName: formData.courseName,
+				Description: formData.description,
+				StartDate: formData.startDate,
+				TeacherId: formData.teacherId
+			}
 		}
 
 		console.log('Submitting Course Data:', courseData)
@@ -101,13 +117,15 @@ export function ModalOverlay({
 			setFormData({
 				courseName: '',
 				description: '',
-				startDate: ''
+				startDate: '',
+				teacherId: ''
 			})
 		} catch (error) {
 			console.error('Unexpected error:', error)
 			setError('An error occurred while submitting the form')
 		} finally {
-			setLoading(false)
+			location.reload();
+			setLoading(false);
 		}
 	}
 
@@ -117,7 +135,6 @@ export function ModalOverlay({
 	return (
 		<div className='modal-overlay'>
 			{loading && <p>Loading...</p>}
-			{error && <p className='error-message'>{error}</p>}
 			<div className='modal-content'>
 				<h2>Add Course</h2>
 				<div className='modal-input'>
@@ -155,7 +172,7 @@ export function ModalOverlay({
 				</div>
 				<div className='modal-input'>
 					<label htmlFor='teacher'>Teacher</label>
-					<TeacherDropdown data={teachers} />
+					<TeacherDropdown handleInputChange={handleInputChange} data={teachers} />
 				</div>
 				<div className='modal-buttons'>
 					<ReusableBtn
@@ -174,6 +191,7 @@ export function ModalOverlay({
 						Close
 					</ReusableBtn>
 				</div>
+				{error && <p className='error-message'>{error}</p>}
 			</div>
 		</div>
 	)
