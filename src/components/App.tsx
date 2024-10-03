@@ -127,8 +127,6 @@ export function App(): ReactElement {
 			});
 
 			const data: IUser[] = await response.json();
-			console.log(data);
-
 			setTeachers(data);
 		} catch (error) {
 			console.error("Error fetching the api, error: ", error);
