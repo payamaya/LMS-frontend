@@ -20,7 +20,8 @@ export default function CourseListCard() {
     } else {
       fetchCourses()
     }
-  }, [teacherBasicData, fetchCourses])
+  }, [teacherBasicData])
+  // }, [teacherBasicData, fetchCourses])
 
   // Function to remove the course from the state after deletion
   const handleDeleteSuccess = (deletedCourseId: string) => {
