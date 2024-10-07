@@ -1,81 +1,67 @@
-import { ReactElement, useEffect, useState } from 'react'
-import {
-  //IContext,
-  IModule,
-} from '../utils/interfaces'
-// import { useOutletContext } from 'react-router-dom'
-import { useLoading } from '../hooks/useLoading'
+import { ReactElement, useState } from 'react'
+import { IContext, IModule } from '../utils/interfaces'
+import { useOutletContext } from 'react-router-dom'
 
 interface ICourseDetailsModuleDropdownProps {
-  module: IModule
+	module: IModule
 }
 
-export function CourseDetailsModuleDropdown({
-  module,
-}: ICourseDetailsModuleDropdownProps): ReactElement {
-  const [isOpen, setIsOpen] = useState(false)
+export function CourseDetailsModuleDropdown({ module, }: ICourseDetailsModuleDropdownProps): ReactElement {
+	const [isOpen, setIsOpen] = useState(false)
+	const { isLoading }: IContext = useOutletContext<IContext>()
 
-  // const { isLoading }: IContext = useOutletContext<IContext>()
-  const [isFirstLoad, setIsFirstLoad] = useState(true)
-  const isLoading = useLoading(2000)
-  // AI Helper function to calculate the time duration
-  const calculateDuration = (startTime: string, endTime: string): string => {
-    const start = new Date(startTime)
-    const end = new Date(endTime)
-    const diffInMs = end.getTime() - start.getTime() // Difference in milliseconds
+	// AI Helper function to calculate the time duration
+	const calculateDuration = (startTime: string, endTime: string): string => {
+		const start = new Date(startTime)
+		const end = new Date(endTime)
+		const diffInMs = end.getTime() - start.getTime() // Difference in milliseconds
 
-    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60))
-    const diffInMinutes = Math.floor(
-      (diffInMs % (1000 * 60 * 60)) / (1000 * 60)
-    )
+		const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60))
+		const diffInMinutes = Math.floor(
+			(diffInMs % (1000 * 60 * 60)) / (1000 * 60)
+		)
 
-    if (diffInHours >= 24) {
-      const days = Math.floor(diffInHours / 24)
-      const hours = diffInHours % 24
-      if (hours === 0) {
-        return `${days}d`
-      } else {
-        return `${days}d ${hours}h`
-      }
-    }
+		if (diffInHours >= 24) {
+			const days = Math.floor(diffInHours / 24)
+			const hours = diffInHours % 24
+			if (hours === 0) {
+				return `${days}d`
+			} else {
+				return `${days}d ${hours}h`
+			}
+		}
 
-    if (diffInMinutes === 0) {
-      return `${diffInHours}h` // Show only hours if minutes are zero
-    }
-    return `${diffInHours}h ${diffInMinutes}m`
-  }
-  useEffect(() => {
-    // Set isFirstLoad to false after the first load is complete
-    if (isLoading) {
-      setIsFirstLoad(false)
-    }
-  }, [isLoading])
-  return (
-    <div className='course-details-modules-dropdown'>
-      <button
-        className='g-list-item course-details-modules-dropdown-button'
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <p>{module.moduleName}</p>
-        <span className='material-symbols-outlined'>keyboard_arrow_down</span>
-      </button>
-      {isOpen && (
-        <ul className='g-list'>
-          {isFirstLoad ? (
-            <p className='isLoading'>Loading modules...</p>
-          ) : (
-            module.activities.map((activity) => (
-              <li key={activity.id} className='g-list-item g-text'>
-                <span>{activity.activityName}</span>
-                <span>
-                  Duration:{' '}
-                  {calculateDuration(activity.startTime, activity.endTime)}
-                </span>
-              </li>
-            ))
-          )}
-        </ul>
-      )}
-    </div>
-  )
+		if (diffInMinutes === 0) {
+			return `${diffInHours}h` // Show only hours if minutes are zero
+		}
+		return `${diffInHours}h ${diffInMinutes}m`
+	}
+
+	return (
+		<div className='course-details-modules-dropdown'>
+			<button
+				className='g-list-item course-details-modules-dropdown-button'
+				onClick={() => setIsOpen(!isOpen)}>
+				<p>{module.moduleName}</p>
+				<span className='material-symbols-outlined'>keyboard_arrow_down</span>
+			</button>
+			{isOpen && (
+				<ul className='g-list'>
+					{isLoading ? (
+						<p className='isLoading'>Loading modules...</p>
+					) : (
+						module.activities.map((activity) => (
+							<li key={activity.id} className='g-list-item g-text'>
+								<span>{activity.activityName}</span>
+								<span>
+									Duration:{' '}
+									{calculateDuration(activity.startTime, activity.endTime)}
+								</span>
+							</li>
+						))
+					)}
+				</ul>
+			)}
+		</div>
+	)
 }

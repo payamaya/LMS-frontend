@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import { IBasicCourseInfo, IContext, IDetailedCourse, ITokens } from "../utils/interfaces.ts";
+import { IBasicCourseInfo, IContext, IDetailedCourse, IModule, ITokens, IUser } from "../utils/interfaces.ts";
 import { BASE_URL } from "../utils/constants.ts";
 import { AuthProvider } from "../context/authProvider.tsx";
 
@@ -11,6 +11,8 @@ export function App(): ReactElement {
 	const [activeCourse, setActiveCourse] = useState<IBasicCourseInfo | null>(null);
 	const [detailedCourse, setDetailedCourse] = useState<IDetailedCourse | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [activeModule, setActiveModule] = useState<IModule | null>(null);
+	const [teachers, setTeachers] = useState<IUser[] | null>(null);
 
 	const toggleActiveCourse = (id: string): void => {
 		if (teacherBasicData != null) {
@@ -106,16 +108,48 @@ export function App(): ReactElement {
 		}
 	};
 
+
+	const fetchTeachers = async (): Promise<void> => {
+		setIsLoading(true);
+		try {
+			const token: any | null = localStorage.getItem("tokens");
+			const parsedToken: ITokens = JSON.parse(token);
+
+			const headers: HeadersInit = {
+				"Content-Type": "application/json",
+				Accept: "application/json",
+				Authorization: `Bearer ${parsedToken.accessToken}`,
+			};
+
+			const response = await fetch(`${BASE_URL}/users?onlyTeachers=true`, {
+				method: "GET",
+				headers: headers,
+			});
+
+			const data: IUser[] = await response.json();
+			setTeachers(data);
+		} catch (error) {
+			console.error("Error fetching the api, error: ", error);
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
+
 	// context
 	const context: IContext = {
 		teacherBasicData,
 		isLoading,
 		activeCourse,
 		detailedCourse,
+		activeModule, // Add activeModule here
 		toggleActiveCourse,
 		fetchCourses,
 		fetchCoursesById,
 		fetchCourseForStudent,
+		setActiveModule,
+		fetchTeachers,
+		teachers
 	};
 
 	return (
